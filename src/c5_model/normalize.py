@@ -46,7 +46,7 @@ def strip_term_prefix(term: str, definition: str) -> tuple[str, bool]:
         return clean_definition, False
 
     pattern = re.compile(
-        rf"^{re.escape(clean_term)}(?:\s*[:\-–—]\s*|\s+)(?:(?:adalah|merupakan)\s+)?",
+        rf"^{re.escape(clean_term)}(?:\s*[,;:\-–—]\s*|\s+)(?:(?:adalah|merupakan)\s+)?",
         re.IGNORECASE,
     )
     retrieval_text, substitutions = pattern.subn("", clean_definition, count=1)
@@ -94,4 +94,3 @@ def parse_regulation_label(label: str) -> dict[str, str]:
 
 def source_host(url: str) -> str:
     return (urlparse(normalize_display_text(url)).hostname or "").casefold()
-

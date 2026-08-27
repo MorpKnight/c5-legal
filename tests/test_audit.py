@@ -29,6 +29,15 @@ class NormalizeTests(unittest.TestCase):
         self.assertFalse(removed)
         self.assertEqual(text, definition)
 
+    def test_strips_term_before_defined_alias(self) -> None:
+        text, removed = strip_term_prefix(
+            "Anggaran Pendapatan dan Belanja Negara",
+            "Anggaran Pendapatan dan Belanja Negara, selanjutnya disebut APBN, adalah rencana keuangan tahunan negara.",
+        )
+
+        self.assertTrue(removed)
+        self.assertEqual(text, "selanjutnya disebut APBN, adalah rencana keuangan tahunan negara.")
+
     def test_parses_regulation_identity(self) -> None:
         parsed = parse_regulation_label("Undang-Undang Nomor 27 Tahun 2022")
 
@@ -61,6 +70,7 @@ class AuditTests(unittest.TestCase):
             self.assertEqual(stats["multi_sense_term_groups"], 1)
             self.assertEqual(stats["curated_records"], 3)
             self.assertEqual(stats["quarantined_records"], 1)
+            self.assertEqual(stats["quarantined_raw_records"], 1)
             self.assertEqual(curated.height, 3)
             self.assertEqual(quarantined.height, 1)
             self.assertEqual(quarantined["verification_status"][0], "quarantined")

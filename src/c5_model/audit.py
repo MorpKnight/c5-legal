@@ -211,7 +211,8 @@ Hasil ini adalah audit teknis. Status `candidate_secondary_source` bukan verifik
 - Raw records participating in duplicate term groups: {stats['records_in_duplicate_term_groups']:,}
 - Terms with more than one distinct sense/source record: {stats['multi_sense_term_groups']:,}
 - Curated candidate records: {stats['curated_records']:,}
-- Quarantined records: {stats['quarantined_records']:,}
+- Quarantined unique records: {stats['quarantined_records']:,}
+- Raw rows represented by quarantine: {stats['quarantined_raw_records']:,}
 
 ## Retrieval text
 
@@ -409,6 +410,7 @@ def run_audit(
         "multi_sense_term_groups": len(multi_sense_terms),
         "curated_records": len(curated),
         "quarantined_records": len(quarantined),
+        "quarantined_raw_records": sum(record["duplicate_count"] for record in quarantined),
         "retrieval_prefix_removed_records": sum(record["retrieval_prefix_removed"] for record in records),
         "retrieval_prefix_retained_records": sum(not record["retrieval_prefix_removed"] for record in records),
         "definition_length": {
