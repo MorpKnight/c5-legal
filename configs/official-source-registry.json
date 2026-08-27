@@ -1,0 +1,321 @@
+{
+  "schema_version": 1,
+  "authority": "Direktorat Jenderal Peraturan Perundang-undangan",
+  "portal": "https://peraturan.go.id/",
+  "observed_at": "2026-08-27",
+  "notes": "Official pages and documents are review starting points. Status signals are not automatic legal verification.",
+  "sources": [
+    {
+      "source_id": "peraturan_go_id_uu_11_2020",
+      "regulation_label": "Undang-Undang Nomor 11 Tahun 2020",
+      "regulation_title": "Cipta Kerja",
+      "official_portal_url": "https://peraturan.go.id/id/uu-no-11-tahun-2020",
+      "status_signal": "portal_not_in_force_observed",
+      "status_note": "Portal resmi saat observasi menampilkan status Tidak Berlaku; telusuri UU Nomor 6 Tahun 2023 dan/atau Perpu Nomor 2 Tahun 2022 sebelum memakai sumber ini."
+    },
+    {
+      "source_id": "peraturan_go_id_uu_27_2022",
+      "regulation_label": "Undang-Undang Nomor 27 Tahun 2022",
+      "regulation_title": "Pelindungan Data Pribadi",
+      "official_portal_url": "https://peraturan.go.id/id/uu-no-27-tahun-2022",
+      "status_signal": "status_not_reviewed",
+      "status_note": "Periksa status dan hubungan perubahan pada portal resmi saat review manusia."
+    },
+    {
+      "source_id": "peraturan_go_id_uu_40_2007",
+      "regulation_label": "Undang-Undang Nomor 40 Tahun 2007",
+      "regulation_title": "Perseroan Terbatas",
+      "official_portal_url": "https://peraturan.go.id/id/uu-no-40-tahun-2007",
+      "status_signal": "amendment_chain_review_required",
+      "status_note": "Telusuri perubahan dan aturan terkait, termasuk perubahan melalui rezim Cipta Kerja, sebelum menilai definisi sebagai current."
+    },
+    {
+      "source_id": "peraturan_go_id_uu_21_2001",
+      "regulation_label": "Undang-Undang Nomor 21 Tahun 2001",
+      "regulation_title": "Otonomi Khusus bagi Provinsi Papua",
+      "official_portal_url": "https://peraturan.go.id/id/uu-no-21-tahun-2001",
+      "status_signal": "amendment_chain_review_required",
+      "status_note": "Telusuri perubahan dan aturan terkait sebelum menilai definisi sebagai current."
+    },
+    {
+      "source_id": "peraturan_go_id_uu_42_1999",
+      "regulation_label": "Undang-Undang Nomor 42 Tahun 1999",
+      "regulation_title": "Jaminan Fidusia",
+      "official_portal_url": "https://peraturan.go.id/id/uu-no-42-tahun-1999",
+      "status_signal": "status_not_reviewed",
+      "status_note": "Periksa status dan hubungan perubahan pada portal resmi saat review manusia."
+    },
+    {
+      "source_id": "peraturan_go_id_uu_8_1999",
+      "regulation_label": "Undang-Undang Nomor 8 Tahun 1999",
+      "regulation_title": "Perlindungan Konsumen",
+      "official_portal_url": "https://peraturan.go.id/id/uu-no-8-tahun-1999",
+      "status_signal": "status_not_reviewed",
+      "status_note": "Periksa status dan hubungan perubahan pada portal resmi saat review manusia."
+    },
+    {
+      "source_id": "peraturan_go_id_uu_32_2009",
+      "regulation_label": "Undang-Undang Nomor 32 Tahun 2009",
+      "regulation_title": "Perlindungan dan Pengelolaan Lingkungan Hidup",
+      "official_portal_url": "https://peraturan.go.id/id/uu-no-32-tahun-2009",
+      "status_signal": "amendment_chain_review_required",
+      "status_note": "Telusuri perubahan dan aturan terkait, termasuk perubahan melalui rezim Cipta Kerja, sebelum menilai definisi sebagai current."
+    },
+    {
+      "source_id": "peraturan_go_id_perpres_32_2024",
+      "regulation_label": "Peraturan Presiden Nomor 32 Tahun 2024",
+      "regulation_title": "Tanggung Jawab Perusahaan Platform Digital untuk Mendukung Jurnalisme Berkualitas",
+      "official_portal_url": "https://peraturan.go.id/id/perpres-no-32-tahun-2024",
+      "status_signal": "status_not_reviewed",
+      "status_note": "Periksa status dan hubungan perubahan pada portal resmi saat review manusia."
+    },
+    {
+      "source_id": "peraturan_go_id_permen_pppa_3_2023",
+      "regulation_label": "Peraturan Menteri Pemberdayaan Perempuan dan Perlindungan Anak Nomor 3 Tahun 2023",
+      "regulation_title": "Penyelenggaraan Urusan Pemerintahan Konkuren Bidang Pemberdayaan Perempuan dan Perlindungan Anak",
+      "official_portal_url": "https://peraturan.go.id/id/permen-pppa-no-3-tahun-2023",
+      "status_signal": "status_not_reviewed",
+      "status_note": "Periksa status dan hubungan perubahan pada portal resmi saat review manusia."
+    },
+    {
+      "source_id": "peraturan_go_id_uu_19_2016",
+      "regulation_label": "Undang-Undang Nomor 19 Tahun 2016",
+      "regulation_title": "Perubahan atas Undang-Undang Nomor 11 Tahun 2008 tentang Informasi dan Transaksi Elektronik",
+      "official_portal_url": "https://peraturan.go.id/id/uu-no-19-tahun-2016",
+      "status_signal": "amendment_chain_review_required",
+      "status_note": "Telusuri perubahan sesudah undang-undang ini dan gunakan naskah yang sesuai konteks waktu."
+    },
+    {
+      "source_id": "peraturan_go_id_uu_13_2003",
+      "regulation_label": "Undang-Undang Nomor 13 Tahun 2003",
+      "regulation_title": "Ketenagakerjaan",
+      "official_portal_url": "https://peraturan.go.id/id/uu-no-13-tahun-2003",
+      "status_signal": "amendment_chain_review_required",
+      "status_note": "Telusuri perubahan dan aturan terkait sebelum menilai definisi sebagai current."
+    },
+    {
+      "source_id": "peraturan_go_id_uu_2_2017",
+      "regulation_label": "Undang-Undang Nomor 2 Tahun 2017",
+      "regulation_title": "Jasa Konstruksi",
+      "official_portal_url": "https://peraturan.go.id/id/uu-no-2-tahun-2017",
+      "status_signal": "amendment_chain_review_required",
+      "status_note": "Telusuri perubahan dan aturan terkait, termasuk perubahan melalui rezim Cipta Kerja, sebelum menilai definisi sebagai current."
+    },
+    {
+      "source_id": "peraturan_go_id_uu_9_2013",
+      "regulation_label": "Undang-Undang Nomor 9 Tahun 2013",
+      "regulation_title": "Pencegahan dan Pemberantasan Tindak Pidana Pendanaan Terorisme",
+      "official_portal_url": "https://peraturan.go.id/id/uu-no-9-tahun-2013",
+      "status_signal": "status_not_reviewed",
+      "status_note": "Periksa status dan hubungan perubahan pada portal resmi saat review manusia."
+    },
+    {
+      "source_id": "peraturan_go_id_uu_10_1998",
+      "regulation_label": "Undang-Undang Nomor 10 Tahun 1998",
+      "regulation_title": "Perubahan atas Undang-Undang Nomor 7 Tahun 1992 tentang Perbankan",
+      "official_portal_url": "https://peraturan.go.id/id/uu-no-10-tahun-1998",
+      "status_signal": "amendment_chain_review_required",
+      "status_note": "Telusuri perubahan dan aturan perbankan sesudahnya sebelum menilai definisi sebagai current."
+    },
+    {
+      "source_id": "peraturan_go_id_uu_4_2023",
+      "regulation_label": "Undang-Undang Nomor 4 Tahun 2023",
+      "regulation_title": "Pengembangan dan Penguatan Sektor Keuangan",
+      "official_portal_url": "https://peraturan.go.id/id/uu-no-4-tahun-2023",
+      "status_signal": "status_not_reviewed",
+      "status_note": "Periksa status dan hubungan perubahan pada portal resmi saat review manusia."
+    },
+    {
+      "source_id": "peraturan_go_id_uu_24_2000",
+      "regulation_label": "Undang-Undang Nomor 24 Tahun 2000",
+      "regulation_title": "Perjanjian Internasional",
+      "official_portal_url": "https://peraturan.go.id/id/uu-no-24-tahun-2000",
+      "status_signal": "status_not_reviewed",
+      "status_note": "Periksa status dan hubungan perubahan pada portal resmi saat review manusia."
+    },
+    {
+      "source_id": "peraturan_go_id_uu_9_2008",
+      "regulation_label": "Undang-Undang Nomor 9 Tahun 2008",
+      "regulation_title": "Penggunaan Bahan Kimia dan Larangan Penggunaan Bahan Kimia sebagai Senjata Kimia",
+      "official_portal_url": "https://peraturan.go.id/id/uu-no-9-tahun-2008",
+      "status_signal": "status_not_reviewed",
+      "status_note": "Periksa status dan hubungan perubahan pada portal resmi saat review manusia."
+    },
+    {
+      "source_id": "peraturan_go_id_lps_1_2022",
+      "regulation_label": "Peraturan Lembaga Penjamin Simpanan Nomor 1 Tahun 2022",
+      "regulation_title": "Likuidasi Bank",
+      "official_portal_url": "https://peraturan.go.id/id/peraturan-lps-no-1-tahun-2022",
+      "status_signal": "status_not_reviewed",
+      "status_note": "Periksa status dan hubungan perubahan pada portal resmi saat review manusia."
+    },
+    {
+      "source_id": "peraturan_go_id_permindag_24_2024",
+      "regulation_label": "Peraturan Menteri Perdagangan Nomor 24 Tahun 2024",
+      "regulation_title": "Kegiatan Tera dan Tera Ulang Alat Ukur, Alat Takar, Alat Timbang, dan Alat Perlengkapan Metrologi Legal",
+      "official_portal_url": "https://peraturan.go.id/id/permendag-no-24-tahun-2024",
+      "status_signal": "status_not_reviewed",
+      "status_note": "Periksa status dan hubungan perubahan pada portal resmi saat review manusia."
+    },
+    {
+      "source_id": "peraturan_go_id_permenhub_pm_6_2022",
+      "regulation_label": "Peraturan Menteri Perhubungan Nomor PM 6 Tahun 2022",
+      "regulation_title": "Kelaiklautan dan Operasional Kapal Penumpang di Bawah Permukaan Air (Passenger Submersible Craft) Berbendera Indonesia",
+      "official_portal_url": "https://www.peraturan.go.id/files/bn249-2022.pdf",
+      "status_signal": "status_not_reviewed",
+      "status_note": "Periksa status pada dokumen dan portal resmi saat review manusia."
+    },
+    {
+      "source_id": "peraturan_go_id_permenkkp_7_2024",
+      "regulation_label": "Peraturan Menteri Kelautan dan Perikanan Nomor 7 Tahun 2024",
+      "regulation_title": "Pengelolaan Lobster (Panulirus spp.), Kepiting (Scylla spp.), dan Rajungan (Portunus spp.)",
+      "official_portal_url": "https://peraturan.go.id/id/permenkkp-no-7-tahun-2024",
+      "status_signal": "status_not_reviewed",
+      "status_note": "Periksa status dan hubungan perubahan pada portal resmi saat review manusia."
+    },
+    {
+      "source_id": "peraturan_go_id_pp_23_2021",
+      "regulation_label": "Peraturan Pemerintah Nomor 23 Tahun 2021",
+      "regulation_title": "Penyelenggaraan Kehutanan",
+      "official_portal_url": "https://peraturan.go.id/id/pp-no-23-tahun-2021",
+      "status_signal": "status_not_reviewed",
+      "status_note": "Periksa status dan hubungan perubahan pada portal resmi saat review manusia."
+    },
+    {
+      "source_id": "peraturan_go_id_pojk_35_2018",
+      "regulation_label": "Peraturan Otoritas Jasa Keuangan Nomor 35/POJK.05/2018",
+      "regulation_title": "Penyelenggaraan Usaha Perusahaan Pembiayaan",
+      "official_portal_url": "https://peraturan.go.id/id/peraturan-ojk-no-35-pojk-05-2018-tahun-2018",
+      "status_signal": "portal_not_in_force_observed",
+      "status_note": "Portal resmi saat observasi menampilkan status Tidak Berlaku; telusuri peraturan perubahan/pengganti sebelum memakai sumber ini."
+    },
+    {
+      "source_id": "peraturan_go_id_uu_22_2022",
+      "regulation_label": "Undang-Undang Nomor 22 Tahun 2022",
+      "regulation_title": "Pemasyarakatan",
+      "official_portal_url": "https://peraturan.go.id/id/uu-no-22-tahun-2022",
+      "status_signal": "status_not_reviewed",
+      "status_note": "Periksa status dan hubungan perubahan pada portal resmi saat review manusia."
+    },
+    {
+      "source_id": "peraturan_go_id_permenhub_pm_11_2022",
+      "regulation_label": "Peraturan Menteri Perhubungan Nomor PM 11 Tahun 2022",
+      "regulation_title": "Peraturan Keselamatan Penerbangan Sipil Bagian 173 tentang Penyelenggara Perancangan Prosedur Penerbangan",
+      "official_portal_url": "https://www.peraturan.go.id/files/bn563-2022.pdf",
+      "status_signal": "status_not_reviewed",
+      "status_note": "Periksa status pada dokumen dan portal resmi saat review manusia."
+    },
+    {
+      "source_id": "peraturan_go_id_pp_71_2010",
+      "regulation_label": "Peraturan Pemerintah Nomor 71 Tahun 2010",
+      "regulation_title": "Standar Akuntansi Pemerintahan",
+      "official_portal_url": "https://peraturan.go.id/id/pp-no-71-tahun-2010",
+      "status_signal": "status_not_reviewed",
+      "status_note": "Periksa status dan hubungan perubahan pada portal resmi saat review manusia."
+    },
+    {
+      "source_id": "peraturan_go_id_permenperin_62_2024",
+      "regulation_label": "Peraturan Menteri Perindustrian Nomor 62 Tahun 2024",
+      "regulation_title": "Pemberlakuan Standar Nasional Indonesia untuk Air Minum dalam Kemasan Secara Wajib",
+      "official_portal_url": "https://peraturan.go.id/id/permenperin-no-62-tahun-2024",
+      "status_signal": "status_not_reviewed",
+      "status_note": "Periksa status dan hubungan perubahan pada portal resmi saat review manusia."
+    },
+    {
+      "source_id": "peraturan_go_id_permenkeu_136_2024",
+      "regulation_label": "Peraturan Menteri Keuangan Nomor 136 Tahun 2024",
+      "regulation_title": "Pengenaan Pajak Minimum Global Berdasarkan Kesepakatan Internasional",
+      "official_portal_url": "https://peraturan.go.id/id/permenkeu-no-136--tahun-2024",
+      "status_signal": "status_not_reviewed",
+      "status_note": "Periksa status dan hubungan perubahan pada portal resmi saat review manusia."
+    },
+    {
+      "source_id": "peraturan_go_id_permenhub_pm_32_2022",
+      "regulation_label": "Peraturan Menteri Perhubungan Nomor PM 32 Tahun 2022",
+      "regulation_title": "Peraturan Keselamatan Penerbangan Sipil Bagian 92 tentang Keselamatan Pengangkutan Barang Berbahaya dengan Pesawat Udara",
+      "official_portal_url": "https://www.peraturan.go.id/files/bn1045-2022.pdf",
+      "status_signal": "status_not_reviewed",
+      "status_note": "Periksa status pada dokumen dan portal resmi saat review manusia."
+    },
+    {
+      "source_id": "peraturan_go_id_pbi_12_2023",
+      "regulation_label": "Peraturan Bank Indonesia Nomor 12 Tahun 2023",
+      "regulation_title": "Penerbitan Instrumen Pasar Uang dan Transaksi Pasar Uang",
+      "official_portal_url": "https://peraturan.go.id/id/peraturan-bi-no-12-tahun-2023",
+      "status_signal": "portal_not_in_force_observed",
+      "status_note": "Portal resmi saat observasi menampilkan status Tidak Berlaku; telusuri PBI Nomor 6 Tahun 2024 dan aturan pengganti sebelum memakai sumber ini."
+    },
+    {
+      "source_id": "peraturan_go_id_permen_pppa_13_2021",
+      "regulation_label": "Peraturan Menteri Pemberdayaan Perempuan dan Perlindungan Anak Nomor 13 Tahun 2021",
+      "regulation_title": "Partisipasi Masyarakat dalam Bidang Pemberdayaan Perempuan dan Perlindungan Anak",
+      "official_portal_url": "https://peraturan.go.id/id/permen-pppa-no-13-tahun-2021",
+      "status_signal": "status_not_reviewed",
+      "status_note": "Periksa status dan hubungan perubahan pada portal resmi saat review manusia."
+    },
+    {
+      "source_id": "peraturan_go_id_pp_28_2024",
+      "regulation_label": "Peraturan Pemerintah Nomor 28 Tahun 2024",
+      "regulation_title": "Peraturan Pelaksanaan Undang-Undang Nomor 17 Tahun 2023 tentang Kesehatan",
+      "official_portal_url": "https://peraturan.go.id/id/pp-no-28-tahun-2024",
+      "status_signal": "status_not_reviewed",
+      "status_note": "Periksa status dan hubungan perubahan pada portal resmi saat review manusia."
+    },
+    {
+      "source_id": "peraturan_go_id_permenkominfo_11_2022",
+      "regulation_label": "Peraturan Menteri Komunikasi dan Informatika Nomor 11 Tahun 2022",
+      "regulation_title": "Tata Kelola Penyelenggaraan Sertifikasi Elektronik",
+      "official_portal_url": "https://www.peraturan.go.id/files/bn1017-2022.pdf",
+      "status_signal": "status_not_reviewed",
+      "status_note": "Periksa status pada dokumen dan portal resmi saat review manusia."
+    },
+    {
+      "source_id": "peraturan_go_id_perma_2_2021",
+      "regulation_label": "Peraturan Mahkamah Agung Nomor 2 Tahun 2021",
+      "regulation_title": "Perubahan atas Peraturan Mahkamah Agung Nomor 3 Tahun 2016 tentang Tata Cara Pengajuan Keberatan dan Penitipan Ganti Kerugian ke Pengadilan Negeri dalam Pengadaan Tanah Bagi Pembangunan untuk Kepentingan Umum",
+      "official_portal_url": "https://peraturan.go.id/id/peraturan-ma-no-2-tahun-2021",
+      "status_signal": "status_not_reviewed",
+      "status_note": "Periksa status dan hubungan perubahan pada portal resmi saat review manusia."
+    },
+    {
+      "source_id": "peraturan_go_id_uu_2_2004",
+      "regulation_label": "Undang-Undang Nomor 2 Tahun 2004",
+      "regulation_title": "Penyelesaian Perselisihan Hubungan Industrial",
+      "official_portal_url": "https://peraturan.go.id/id/uu-no-2-tahun-2004",
+      "status_signal": "status_not_reviewed",
+      "status_note": "Periksa status dan hubungan perubahan pada portal resmi saat review manusia."
+    },
+    {
+      "source_id": "peraturan_go_id_uu_6_2017",
+      "regulation_label": "Undang-Undang Nomor 6 Tahun 2017",
+      "regulation_title": "Arsitek",
+      "official_portal_url": "https://peraturan.go.id/id/uu-no-6-tahun-2017",
+      "status_signal": "status_not_reviewed",
+      "status_note": "Periksa status dan hubungan perubahan pada portal resmi saat review manusia."
+    },
+    {
+      "source_id": "peraturan_go_id_uu_23_2011",
+      "regulation_label": "Undang-Undang Nomor 23 Tahun 2011",
+      "regulation_title": "Pengelolaan Zakat",
+      "official_portal_url": "https://peraturan.go.id/id/uu-no-23-tahun-2011",
+      "status_signal": "status_not_reviewed",
+      "status_note": "Periksa status dan hubungan perubahan pada portal resmi saat review manusia."
+    },
+    {
+      "source_id": "peraturan_go_id_pojk_18_2023",
+      "regulation_label": "Peraturan Otoritas Jasa Keuangan Nomor 18 Tahun 2023",
+      "regulation_title": "Penerbitan dan Persyaratan Efek Bersifat Utang dan Sukuk Berlandaskan Keberlanjutan",
+      "official_portal_url": "https://peraturan.go.id/id/peraturan-ojk-no-18-tahun-2023",
+      "status_signal": "status_not_reviewed",
+      "status_note": "Periksa status dan hubungan perubahan pada portal resmi saat review manusia."
+    },
+    {
+      "source_id": "peraturan_go_id_uu_36_1999",
+      "regulation_label": "Undang-Undang Nomor 36 Tahun 1999",
+      "regulation_title": "Telekomunikasi",
+      "official_portal_url": "https://peraturan.go.id/id/uu-no-36-tahun-1999",
+      "status_signal": "status_not_reviewed",
+      "status_note": "Periksa status dan hubungan perubahan pada portal resmi saat review manusia."
+    }
+  ]
+}

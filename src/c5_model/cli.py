@@ -11,6 +11,8 @@ from c5_model.enrich import default_paths as default_enrichment_paths
 from c5_model.enrich import enrich_sources
 from c5_model.pilot import default_paths as default_pilot_paths
 from c5_model.pilot import select_pilot
+from c5_model.review import default_paths as default_review_paths
+from c5_model.review import prepare_source_review, validate_source_review
 
 
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
@@ -18,6 +20,8 @@ REQUIRED_PATHS = (
     "configs/p0.yaml",
     "configs/pilot-selection.json",
     "configs/source-enrichment.json",
+    "configs/source-review.json",
+    "configs/official-source-registry.json",
     "docs/p0-contract.md",
     "manifests/sources.json",
     "manifests/dataset-lock.json",
@@ -43,6 +47,13 @@ def scaffold_status() -> dict[str, object]:
         else {}
     )
     p0_4_complete = enrichment_manifest.get("status") == "p0_4_complete"
+    review_manifest_path = PROJECT_ROOT / "manifests/source-review.json"
+    review_manifest = (
+        json.loads(review_manifest_path.read_text(encoding="utf-8"))
+        if review_manifest_path.is_file()
+        else {}
+    )
+    p0_5_ready = review_manifest.get("status") == "p0_5_ready_for_human_review"
     completed = ["P0.0", "P0.1"]
     if p0_2_complete:
         completed.append("P0.2")
@@ -57,6 +68,7 @@ def scaffold_status() -> dict[str, object]:
         "p0_2_complete": p0_2_complete,
         "p0_3_complete": p0_3_complete,
         "p0_4_complete": p0_4_complete,
+        "p0_5_ready_for_human_review": p0_5_ready,
         "scaffold_ready": not missing,
         "missing_paths": missing,
     }
@@ -117,6 +129,38 @@ def main() -> None:
     enrichment_parser.add_argument(
         "--report", type=Path, default=enrichment_defaults["report_path"]
     )
+    review_parser = subparsers.add_parser(
+        "prepare-p05", help="Prepare P0.5 official-source review and gold-query slots"
+    )
+    review_defaults = default_review_paths(PROJECT_ROOT)
+    review_parser.add_argument("--pilot", type=Path, default=review_defaults["pilot_path"])
+    review_parser.add_argument(
+        "--enriched", type=Path, default=review_defaults["enriched_path"]
+    )
+    review_parser.add_argument(
+        "--registry", type=Path, default=review_defaults["registry_path"]
+    )
+    review_parser.add_argument(
+        "--config", type=Path, default=review_defaults["config_path"]
+    )
+    review_parser.add_argument(
+        "--evaluation-dir", type=Path, default=review_defaults["evaluation_dir"]
+    )
+    review_parser.add_argument(
+        "--manifest", type=Path, default=review_defaults["manifest_path"]
+    )
+    review_parser.add_argument(
+        "--report", type=Path, default=review_defaults["report_path"]
+    )
+    validate_parser = subparsers.add_parser(
+        "validate-p05", help="Validate manually reviewed P0.5 CSV files"
+    )
+    validate_parser.add_argument(
+        "--source-review", type=Path, default=review_defaults["source_review_path"]
+    )
+    validate_parser.add_argument(
+        "--gold-queries", type=Path, default=review_defaults["gold_queries_path"]
+    )
     args = parser.parse_args()
 
     if args.command in (None, "status"):
@@ -152,6 +196,23 @@ def main() -> None:
             report_path=args.report,
             sources_manifest_path=enrichment_defaults["sources_manifest_path"],
             dataset_lock_path=enrichment_defaults["dataset_lock_path"],
+        )
+        print(json.dumps(summary, ensure_ascii=False, indent=2))
+    elif args.command == "prepare-p05":
+        summary = prepare_source_review(
+            pilot_path=args.pilot,
+            enriched_path=args.enriched,
+            registry_path=args.registry,
+            config_path=args.config,
+            evaluation_dir=args.evaluation_dir,
+            manifest_path=args.manifest,
+            report_path=args.report,
+        )
+        print(json.dumps(summary, ensure_ascii=False, indent=2))
+    elif args.command == "validate-p05":
+        summary = validate_source_review(
+            source_review_path=args.source_review,
+            gold_queries_path=args.gold_queries,
         )
         print(json.dumps(summary, ensure_ascii=False, indent=2))
 

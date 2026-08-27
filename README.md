@@ -9,6 +9,7 @@
 - P0.2 — audit dan normalisasi kamus: **selesai**
 - P0.3 — pemilihan pilot 50 istilah: **pipeline tersedia; lihat `c5-model status` untuk hasil run**
 - P0.4 — source enrichment kandidat: **pipeline tersedia; lihat `c5-model status` untuk hasil run**
+- P0.5 — source review dan gold-query scaffold: **pipeline tersedia; menunggu review manusia**
 
 Tidak ada model, embedding, atau dataset Hugging Face yang diproses pada P0.2.
 
@@ -124,6 +125,19 @@ tidak ada jalur otomatis menjadi `verified`.
 Setelah P0.4, P0.5 memeriksa kandidat terhadap sumber resmi dan menentukan
 record yang layak dipakai untuk authoring gold queries.
 
+Siapkan antrean review P0.5 setelah P0.4 selesai:
+
+```bash
+uv run c5-model prepare-p05
+uv run c5-model validate-p05
+```
+
+`prepare-p05` mengikat 50 istilah pilot ke registry 39 regulasi pada portal
+resmi, menyimpan kandidat P0.4 sebagai konteks saja, dan membuat 250 slot gold
+query. Source row selalu dimulai sebagai `pending_human_review`; query text
+sengaja kosong agar tidak terjadi leakage dari definisi sumber. `validate-p05`
+memeriksa perubahan manual tanpa menaikkan status secara otomatis.
+
 Artefak P0.2 yang dihasilkan secara lokal:
 
 ```text
@@ -156,4 +170,15 @@ data/curated/pilot_terms_enriched.parquet
 data/curated/source_review_queue.csv
 manifests/source-enrichment.json
 reports/p0/source-enrichment.md
+```
+
+Artefak P0.5 yang dihasilkan secara lokal:
+
+```text
+data/evaluation/source_review_queue.csv
+data/evaluation/source_review_queue.parquet
+data/evaluation/gold_queries.csv
+data/evaluation/gold_queries.parquet
+manifests/source-review.json
+reports/p0/source-review.md
 ```

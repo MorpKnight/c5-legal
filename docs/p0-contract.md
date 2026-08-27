@@ -38,6 +38,7 @@ Corpus legal-term yang bersih, query yang tidak membocorkan istilah, dan retriev
 
 - corpus legal-term terstruktur;
 - source/provenance manifest;
+- official-source review queue dan registry sumber resmi;
 - gold retrieval queries dan locked test split;
 - baseline exact, fuzzy, BM25, embedding, dan hybrid bila dibutuhkan;
 - laporan kualitas dan runtime;
@@ -89,4 +90,3 @@ Evidence: kebutuhan glossary dengan sumber dan keputusan pengguna
   -> Decision: adopt, adapt, defer, atau stop
   -> Next question: apakah metode terpilih layak dikemas untuk AMT?
 ```
-

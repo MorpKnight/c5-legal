@@ -1,0 +1,58 @@
+{
+  "config_path": "configs/source-review.json",
+  "config_sha256": "0a722e0f67b031bc401d06baba4d5e46db177f3c7ffa26550a83dbcfa30143dc",
+  "enriched_path": "data/curated/pilot_terms_enriched.parquet",
+  "enriched_sha256": "12c61920e8ec0699710188298a15eba13a74ecf01519e23f3eeb83567b99169c",
+  "generated_at": "2026-08-27T06:10:59.779768+00:00",
+  "gold_approved_count": 0,
+  "gold_query_slot_count": 250,
+  "gold_query_slots_per_term": 5,
+  "gold_review_status_counts": {
+    "blocked_unverified_source": 250
+  },
+  "locked_test_seed": "p0.5-locked-test-v1",
+  "locked_test_term_count": 20,
+  "locked_test_term_ids": [
+    "term_eceaff18cc63e78e",
+    "term_1718d6ae301a730d",
+    "term_b44f4ecb8747d3c6",
+    "term_76986a3fe85daaf9",
+    "term_ed6f8d7aef1eba60",
+    "term_4ec3eb2986d900d0",
+    "term_66a23fc5a37a542d",
+    "term_f281a102d467c342",
+    "term_8980a6aa332d5444",
+    "term_04520113742320ea",
+    "term_f3f898a88b11afba",
+    "term_afbe17d85bd000ba",
+    "term_e0dcd7da7e364a0e",
+    "term_e9fa74e7f9fdbb48",
+    "term_99ef399cd17d2d50",
+    "term_99cf2b3e279a0e5c",
+    "term_5b2d8d0836be6fac",
+    "term_81bf5b271bdd9a16",
+    "term_a3516e200e37f33b",
+    "term_863c18bbf2da1546"
+  ],
+  "official_authority": "Direktorat Jenderal Peraturan Perundang-undangan",
+  "official_portal": "https://peraturan.go.id/",
+  "output_hashes": {
+    "data/evaluation/gold_queries.csv": "7063295ec18ed3d7a61c6c4396eb6f7d7ab41d1a3ea8dbeec276518b8289a161",
+    "data/evaluation/gold_queries.parquet": "7385eb8cc85bf6e2bf4c7eb1206ea9353a670d6452b12939734e52ecd06e1dd9",
+    "data/evaluation/source_review_queue.csv": "63e304a95b674d368fe814335c6e5139d599db6999f597e475265fbaec28d0c4",
+    "data/evaluation/source_review_queue.parquet": "41d2ac7c0f3208a651f4ca565c719fc910d29f039217175d52f30a86ef641cbb"
+  },
+  "pilot_path": "data/curated/pilot_terms.parquet",
+  "pilot_sha256": "a78b26903b9b4b499e7a950487d8622c3426693d7e5e8615d14b3db128eec2f1",
+  "pilot_term_count": 50,
+  "registry_path": "configs/official-source-registry.json",
+  "registry_sha256": "f763e47d6c76cd3129be8d0a0d5d2fbe4492e5abd19f7275244c33034c292acb",
+  "registry_source_count": 39,
+  "schema_version": 1,
+  "source_review_count": 50,
+  "source_review_status_counts": {
+    "pending_human_review": 50
+  },
+  "status": "p0_5_ready_for_human_review",
+  "verified_source_count": 0
+}

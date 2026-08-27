@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "source_registry_path": "configs/official-source-registry.json",
+  "gold_query_slots_per_term": 5,
+  "locked_test_term_count": 20,
+  "locked_test_seed": "p0.5-locked-test-v1",
+  "policy": {
+    "source_review_is_human_gated": true,
+    "dataset_rows_are_candidate_evidence_only": true,
+    "query_text_is_never_generated_from_source_definition": true,
+    "approved_query_must_not_contain_canonical_term": true,
+    "verified_source_requires_official_document_checksum": true
+  }
+}
