@@ -5,7 +5,7 @@
     {
       "source_id": "local_kamus_hukum",
       "kind": "local_seed_glossary",
-      "location": "/Users/giovan/Downloads/kamus_hukum.csv",
+      "location": "data/raw/kamus_hukum.csv",
       "revision": null,
       "sha256": null,
       "retrieved_at": null,
@@ -34,4 +34,3 @@
     }
   ]
 }
-

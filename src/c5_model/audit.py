@@ -178,6 +178,14 @@ def write_json(path: Path, payload: dict[str, Any]) -> None:
     )
 
 
+def portable_path(path: Path, project_root: Path) -> str:
+    resolved = path.resolve()
+    try:
+        return str(resolved.relative_to(project_root.resolve()))
+    except ValueError:
+        return path.name
+
+
 def render_report(stats: dict[str, Any], multi_sense_terms: list[str]) -> str:
     missing_lines = "\n".join(
         f"- `{column}`: {count}" for column, count in stats["missing_fields"].items()
@@ -264,7 +272,7 @@ def update_manifests(
     *,
     sources_manifest_path: Path,
     dataset_lock_path: Path,
-    input_path: Path,
+    input_path_label: str,
     input_sha256: str,
     input_size_bytes: int,
     raw_records: int,
@@ -280,13 +288,14 @@ def update_manifests(
                     "sha256": input_sha256,
                     "size_bytes": input_size_bytes,
                     "row_count": raw_records,
-                    "vm_location": str(input_path),
+                    "location": input_path_label,
                     "retrieved_at": generated_at,
                     "processing_status": "processed",
                     "verification_status": "secondary_source_needs_official_review",
                     "outputs": output_hashes,
                 }
             )
+            source.pop("vm_location", None)
     sources["status"] = "p0_2_complete"
     write_json(sources_manifest_path, sources)
 
@@ -301,7 +310,7 @@ def update_manifests(
                 "sha256": input_sha256,
                 "size_bytes": input_size_bytes,
                 "row_count": raw_records,
-                "input_path": str(input_path),
+                "input_path": input_path_label,
                 "outputs": output_hashes,
             }
         ],
@@ -320,6 +329,8 @@ def run_audit(
     dataset_lock_path: Path | None = None,
 ) -> dict[str, Any]:
     input_path = input_path.resolve()
+    project_root = report_path.resolve().parents[2]
+    input_path_label = portable_path(input_path, project_root)
     input_sha_before = sha256_file(input_path)
     input_size_bytes = input_path.stat().st_size
     raw_rows = read_source(input_path)
@@ -398,7 +409,7 @@ def run_audit(
     )
 
     output_hashes = {
-        str(path): sha256_file(path)
+        portable_path(path, project_root): sha256_file(path)
         for path in (
             curated_csv,
             curated_parquet,
@@ -411,7 +422,7 @@ def run_audit(
     stats: dict[str, Any] = {
         "schema_version": 1,
         "generated_at": generated_at,
-        "input_path": str(input_path),
+        "input_path": input_path_label,
         "input_sha256": input_sha_before,
         "input_size_bytes": input_size_bytes,
         "raw_input_unchanged": input_sha_before == input_sha_after,
@@ -455,7 +466,7 @@ def run_audit(
         update_manifests(
             sources_manifest_path=sources_manifest_path,
             dataset_lock_path=dataset_lock_path,
-            input_path=input_path,
+            input_path_label=input_path_label,
             input_sha256=input_sha_before,
             input_size_bytes=input_size_bytes,
             raw_records=len(raw_rows),
