@@ -28,7 +28,7 @@ def scaffold_status() -> dict[str, object]:
     missing = [path for path in REQUIRED_PATHS if not (PROJECT_ROOT / path).is_file()]
     sources_path = PROJECT_ROOT / "manifests/sources.json"
     sources = json.loads(sources_path.read_text(encoding="utf-8")) if sources_path.is_file() else {}
-    p0_2_complete = sources.get("status") == "p0_2_complete"
+    p0_2_complete = sources.get("status") in {"p0_2_complete", "p0_4_complete"}
     pilot_manifest_path = PROJECT_ROOT / "manifests/pilot-selection.json"
     pilot_manifest = (
         json.loads(pilot_manifest_path.read_text(encoding="utf-8"))
