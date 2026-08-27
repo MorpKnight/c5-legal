@@ -4,7 +4,9 @@ version = "0.1.0"
 description = "Reproducible legal terminology retrieval experiments for AMT"
 readme = "README.md"
 requires-python = ">=3.12,<3.13"
-dependencies = []
+dependencies = [
+    "polars>=1.35,<2",
+]
 
 [project.scripts]
 c5-model = "c5_model.cli:main"
@@ -18,4 +20,3 @@ packages = ["src/c5_model"]
 
 [tool.uv]
 package = true
-

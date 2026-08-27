@@ -6,9 +6,9 @@
 
 - P0.0 — kontrak eksperimen: **selesai**
 - P0.1 — scaffold reproducible: **selesai**
-- P0.2 — audit dan normalisasi kamus: **belum dimulai**
+- P0.2 — audit dan normalisasi kamus: **pipeline tersedia; lihat `c5-model status` untuk hasil run**
 
-Tidak ada dataset yang diunduh, dinormalisasi, atau di-embed pada P0.0–P0.1.
+Tidak ada model, embedding, atau dataset Hugging Face yang diproses pada P0.2.
 
 ## Pertanyaan P0
 
@@ -68,6 +68,16 @@ uv run c5-model status
 uv run python -m unittest discover -s tests -v
 ```
 
+Jalankan audit P0.2 pada input yang sudah ditempatkan di `data/raw/`:
+
+```bash
+uv run c5-model audit
+```
+
+Perintah tersebut memverifikasi input tidak berubah, membuang duplikat persis,
+memisahkan record yang belum terverifikasi, membuat `retrieval_text`, menulis
+CSV/Parquet hasil antara, memperbarui manifest, dan menghasilkan laporan audit.
+
 ## Data handling
 
 - Data mentah tidak diubah di tempat.
@@ -79,5 +89,16 @@ uv run python -m unittest discover -s tests -v
 
 ## Tahap berikutnya
 
-P0.2 akan mengaudit dan menormalisasi `kamus_hukum.csv`. Tahap tersebut baru dimulai setelah review scaffold ini.
+Setelah P0.2 berhasil dan hasilnya ditinjau, P0.3 memilih pilot 50 istilah.
 
+Artefak P0.2 yang dihasilkan secara lokal:
+
+```text
+data/interim/legal_term_senses.csv
+data/interim/legal_term_senses.parquet
+data/interim/quarantined_records.csv
+data/interim/quarantined_records.parquet
+data/interim/duplicate_records.csv
+reports/p0/csv-audit.md
+reports/p0/p0-2-run.json
+```

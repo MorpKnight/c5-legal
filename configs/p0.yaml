@@ -1,6 +1,6 @@
 schema_version: 1
 phase: P0
-status: scaffold_ready
+status: p0_2_ready
 
 experiment:
   question: >-
@@ -42,4 +42,3 @@ paths:
   reports: reports/p0
   artifacts: artifacts
   exports: exports
-

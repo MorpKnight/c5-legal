@@ -12,17 +12,17 @@ class ScaffoldTests(unittest.TestCase):
         status = scaffold_status()
 
         self.assertTrue(status["scaffold_ready"])
-        self.assertFalse(status["p0_2_started"])
-        self.assertEqual(status["next"], "P0.2")
+        self.assertIn(status["next"], {"P0.2", "P0.3"})
+        self.assertIsInstance(status["p0_2_complete"], bool)
         self.assertEqual(status["missing_paths"], [])
 
-    def test_sources_are_not_processed_yet(self) -> None:
+    def test_source_processing_status_is_known(self) -> None:
         manifest_path = PROJECT_ROOT / "manifests/sources.json"
         manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
 
         statuses = {source["processing_status"] for source in manifest["sources"]}
-        self.assertNotIn("processed", statuses)
-        self.assertEqual(manifest["status"], "pending_p0_2")
+        self.assertTrue(statuses <= {"not_started", "processed", "deferred"})
+        self.assertIn(manifest["status"], {"pending_p0_2", "p0_2_complete"})
 
     def test_generated_data_directories_exist(self) -> None:
         expected = (
@@ -43,4 +43,3 @@ class ScaffoldTests(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
-
