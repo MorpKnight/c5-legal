@@ -1,13 +1,14 @@
 from __future__ import annotations
 
 import hashlib
+import json
 import tempfile
 import unittest
 from pathlib import Path
 
 import polars as pl
 
-from c5_model.audit import quarantine_reason, run_audit
+from c5_model.audit import quarantine_reason, run_audit, update_manifests
 from c5_model.cli import PROJECT_ROOT
 from c5_model.normalize import parse_regulation_label, strip_term_prefix
 
@@ -47,6 +48,67 @@ class NormalizeTests(unittest.TestCase):
 
 
 class AuditTests(unittest.TestCase):
+    def test_manifest_update_preserves_downstream_lock(self) -> None:
+        with tempfile.TemporaryDirectory() as temporary_directory:
+            root = Path(temporary_directory)
+            sources_path = root / "sources.json"
+            lock_path = root / "dataset-lock.json"
+            sources_path.write_text(
+                '{"status":"p0_4_complete","sources":[{"source_id":"local_kamus_hukum","sha256":"same"},{"source_id":"hf_id_reg_md_rag","processing_status":"processed_as_candidate"}]}',
+                encoding="utf-8",
+            )
+            lock_path.write_text(
+                '{"schema_version":1,"status":"p0_4_source_snapshot_locked","created_at":"earlier","datasets":[{"dataset_id":"local_kamus_hukum"},{"dataset_id":"hf_id_reg_md_rag","sha256":"hf-hash"}],"note":"preserve"}',
+                encoding="utf-8",
+            )
+
+            update_manifests(
+                sources_manifest_path=sources_path,
+                dataset_lock_path=lock_path,
+                input_path_label="data/raw/kamus_hukum.csv",
+                input_sha256="same",
+                input_size_bytes=10,
+                raw_records=2,
+                generated_at="later",
+                output_hashes={"output": "hash"},
+            )
+
+            sources = json.loads(sources_path.read_text(encoding="utf-8"))
+            dataset_lock = json.loads(lock_path.read_text(encoding="utf-8"))
+            self.assertEqual(sources["status"], "p0_4_complete")
+            self.assertEqual(dataset_lock["status"], "p0_4_source_snapshot_locked")
+            self.assertEqual(dataset_lock["note"], "preserve")
+            self.assertEqual(
+                {record["dataset_id"] for record in dataset_lock["datasets"]},
+                {"local_kamus_hukum", "hf_id_reg_md_rag"},
+            )
+
+    def test_manifest_update_rejects_changed_seed_after_downstream(self) -> None:
+        with tempfile.TemporaryDirectory() as temporary_directory:
+            root = Path(temporary_directory)
+            sources_path = root / "sources.json"
+            lock_path = root / "dataset-lock.json"
+            sources_path.write_text(
+                '{"status":"p0_4_complete","sources":[{"source_id":"local_kamus_hukum","sha256":"old"}]}',
+                encoding="utf-8",
+            )
+            lock_path.write_text(
+                '{"schema_version":1,"status":"p0_4_source_snapshot_locked","datasets":[]}',
+                encoding="utf-8",
+            )
+
+            with self.assertRaisesRegex(RuntimeError, "Cannot change the P0.2 seed"):
+                update_manifests(
+                    sources_manifest_path=sources_path,
+                    dataset_lock_path=lock_path,
+                    input_path_label="data/raw/kamus_hukum.csv",
+                    input_sha256="new",
+                    input_size_bytes=10,
+                    raw_records=2,
+                    generated_at="later",
+                    output_hashes={"output": "hash"},
+                )
+
     def test_unparseable_regulation_identity_is_quarantined(self) -> None:
         row = {
             "istilah": "Istilah Rusak",

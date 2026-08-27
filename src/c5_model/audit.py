@@ -295,8 +295,14 @@ def update_manifests(
     output_hashes: dict[str, str],
 ) -> None:
     sources = json.loads(sources_manifest_path.read_text(encoding="utf-8"))
+    downstream_complete = sources.get("status") == "p0_4_complete"
     for source in sources["sources"]:
         if source["source_id"] == "local_kamus_hukum":
+            previous_sha256 = source.get("sha256")
+            if downstream_complete and previous_sha256 not in {None, input_sha256}:
+                raise RuntimeError(
+                    "Cannot change the P0.2 seed after P0.4 artifacts have been created"
+                )
             source.update(
                 {
                     "revision": f"sha256:{input_sha256}",
@@ -311,26 +317,31 @@ def update_manifests(
                 }
             )
             source.pop("vm_location", None)
-    sources["status"] = "p0_2_complete"
+    sources["status"] = "p0_4_complete" if downstream_complete else "p0_2_complete"
     write_json(sources_manifest_path, sources)
 
-    dataset_lock = {
-        "schema_version": 1,
-        "status": "seed_locked",
-        "created_at": generated_at,
-        "datasets": [
-            {
-                "dataset_id": "local_kamus_hukum",
-                "revision": f"sha256:{input_sha256}",
-                "sha256": input_sha256,
-                "size_bytes": input_size_bytes,
-                "row_count": raw_records,
-                "input_path": input_path_label,
-                "outputs": output_hashes,
-            }
-        ],
-        "note": "Only the local seed glossary is locked. Hugging Face sources remain pending/deferred.",
+    dataset_lock = json.loads(dataset_lock_path.read_text(encoding="utf-8"))
+    seed_lock = {
+        "dataset_id": "local_kamus_hukum",
+        "revision": f"sha256:{input_sha256}",
+        "sha256": input_sha256,
+        "size_bytes": input_size_bytes,
+        "row_count": raw_records,
+        "input_path": input_path_label,
+        "outputs": output_hashes,
     }
+    datasets = [
+        record
+        for record in dataset_lock.get("datasets", [])
+        if record["dataset_id"] != "local_kamus_hukum"
+    ]
+    dataset_lock["datasets"] = [seed_lock, *datasets]
+    dataset_lock["updated_at"] = generated_at
+    if not downstream_complete:
+        dataset_lock["status"] = "seed_locked"
+        dataset_lock["note"] = (
+            "Only the local seed glossary is locked. Hugging Face sources remain pending/deferred."
+        )
     write_json(dataset_lock_path, dataset_lock)
 
 
