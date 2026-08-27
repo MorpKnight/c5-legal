@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "status": "pending_p0_2",
+  "sources": [
+    {
+      "source_id": "local_kamus_hukum",
+      "kind": "local_seed_glossary",
+      "location": "/Users/giovan/Downloads/kamus_hukum.csv",
+      "revision": null,
+      "sha256": null,
+      "retrieved_at": null,
+      "license": "needs_review",
+      "processing_status": "not_started"
+    },
+    {
+      "source_id": "hf_id_reg_md_rag",
+      "kind": "huggingface_candidate_corpus",
+      "repository": "Azzindani/ID_REG_MD_RAG",
+      "revision": null,
+      "sha256": null,
+      "retrieved_at": null,
+      "license": "CC-BY-4.0 claimed by dataset card; verify before use",
+      "processing_status": "not_started"
+    },
+    {
+      "source_id": "hf_id_reg_kg_2511",
+      "kind": "huggingface_optional_enrichment",
+      "repository": "Azzindani/ID_REG_KG_2511",
+      "revision": null,
+      "sha256": null,
+      "retrieved_at": null,
+      "license": "CC-BY-4.0 claimed by dataset card; verify before use",
+      "processing_status": "deferred"
+    }
+  ]
+}
+

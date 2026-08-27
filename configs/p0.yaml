@@ -1,0 +1,45 @@
+schema_version: 1
+phase: P0
+status: scaffold_ready
+
+experiment:
+  question: >-
+    Given an Indonesian legal description or text span, can the system retrieve
+    the relevant legal term and its source without inventing an answer or
+    modifying the user's document?
+  pilot_term_count: 50
+  locked_test_term_count: 20
+  query_count_target: 250
+
+retrieval_methods:
+  - exact
+  - fuzzy
+  - bm25
+  - embedding
+  - hybrid_if_needed
+
+evaluation:
+  recall_at_5_minimum: 0.85
+  mean_reciprocal_rank_minimum: 0.70
+  no_answer_false_positive_maximum: 0.10
+  verified_source_accuracy_required: 1.00
+  allowed_verified_source_mismatches: 0
+
+data_policy:
+  raw_data_is_immutable: true
+  raw_data_committed_to_git: false
+  user_documents_allowed: false
+  official_review_required_for_verified: true
+  generated_queries_require_human_review: true
+
+paths:
+  raw: data/raw
+  interim: data/interim
+  curated: data/curated
+  evaluation: data/evaluation
+  samples: data/samples
+  manifests: manifests
+  reports: reports/p0
+  artifacts: artifacts
+  exports: exports
+

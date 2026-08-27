@@ -1,0 +1,25 @@
+.DS_Store
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Downloaded and generated datasets stay local. Keep directory placeholders.
+data/raw/*
+!data/raw/.gitkeep
+data/interim/*
+!data/interim/.gitkeep
+data/curated/*
+!data/curated/.gitkeep
+data/evaluation/*
+!data/evaluation/.gitkeep
+
+# Generated model and application artifacts.
+artifacts/*
+!artifacts/.gitkeep
+exports/*
+!exports/.gitkeep
+
