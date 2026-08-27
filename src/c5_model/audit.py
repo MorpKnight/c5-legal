@@ -199,6 +199,13 @@ def render_report(stats: dict[str, Any], multi_sense_terms: list[str]) -> str:
     quarantine_lines = "\n".join(
         f"- `{reason}`: {count}" for reason, count in stats["quarantine_reason_counts"].items()
     )
+    quarantine_term_lines = "\n".join(
+        f"- {record['term']} — `{record['reason']}`"
+        for record in stats["quarantine_terms"]
+    )
+    warning_lines = "\n".join(
+        f"- {term}" for term in stats["normalization_warning_terms"]
+    ) or "- Tidak ada"
     sense_lines = "\n".join(f"- {term}" for term in multi_sense_terms) or "- Tidak ada"
 
     return f"""# P0.2 CSV Audit
@@ -211,7 +218,7 @@ Hasil ini adalah audit teknis. Status `candidate_secondary_source` bukan verifik
 
 ## Input integrity
 
-- Path VM: `{stats['input_path']}`
+- Input path: `{stats['input_path']}`
 - SHA-256: `{stats['input_sha256']}`
 - Size: {stats['input_size_bytes']:,} byte
 - Raw records: {stats['raw_records']:,}
@@ -238,6 +245,10 @@ Hasil ini adalah audit teknis. Status `candidate_secondary_source` bukan verifik
 - Definition length p90: {stats['definition_length']['p90']:,} characters
 - Definition length maximum: {stats['definition_length']['max']:,} characters
 
+### Prefix mismatch requiring review
+
+{warning_lines}
+
 ## Missing fields
 
 {missing_lines}
@@ -254,6 +265,10 @@ Hasil ini adalah audit teknis. Status `candidate_secondary_source` bukan verifik
 
 {quarantine_lines}
 
+### Quarantined terms
+
+{quarantine_term_lines}
+
 ## Terms with multiple distinct sense/source records
 
 {sense_lines}
@@ -262,7 +277,7 @@ Hasil ini adalah audit teknis. Status `candidate_secondary_source` bukan verifik
 
 - `source_definition` mempertahankan teks sumber setelah normalisasi Unicode dan whitespace konservatif.
 - `retrieval_text` hanya menghapus awalan istilah yang membocorkan jawaban.
-- Record non-`OK` atau tanpa judul regulasi dipisahkan dari kandidat utama.
+- Record non-`OK`, tanpa judul regulasi, atau dengan identitas regulasi yang tidak dapat diurai dipisahkan dari kandidat utama.
 - Tidak ada record yang diberi status `verified` pada P0.2.
 - Pencocokan ke sumber resmi dan status keberlakuan regulasi adalah tahap berikutnya.
 """
@@ -407,6 +422,16 @@ def run_audit(
     quarantine_reason_counts = dict(
         sorted(Counter(record["quarantine_reason"] for record in quarantined).items())
     )
+    normalization_warning_terms = sorted(
+        record["canonical_term"] for record in records if record["normalization_warning"]
+    )
+    quarantine_terms = sorted(
+        (
+            {"term": record["canonical_term"], "reason": record["quarantine_reason"]}
+            for record in quarantined
+        ),
+        key=lambda record: (record["reason"], record["term"]),
+    )
 
     output_hashes = {
         portable_path(path, project_root): sha256_file(path)
@@ -448,6 +473,8 @@ def run_audit(
         "status_counts": status_counts,
         "source_hosts": source_hosts,
         "quarantine_reason_counts": quarantine_reason_counts,
+        "quarantine_terms": quarantine_terms,
+        "normalization_warning_terms": normalization_warning_terms,
         "multi_sense_terms": multi_sense_terms,
         "output_hashes": output_hashes,
         "runtime": {
