@@ -12,8 +12,9 @@ class ScaffoldTests(unittest.TestCase):
         status = scaffold_status()
 
         self.assertTrue(status["scaffold_ready"])
-        self.assertIn(status["next"], {"P0.2", "P0.3"})
+        self.assertIn(status["next"], {"P0.2", "P0.3", "P0.4"})
         self.assertIsInstance(status["p0_2_complete"], bool)
+        self.assertIsInstance(status["p0_3_complete"], bool)
         self.assertEqual(status["missing_paths"], [])
 
     def test_source_processing_status_is_known(self) -> None:

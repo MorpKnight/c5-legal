@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "target_count": 50,
+  "seed": "c5-p0.3-v1",
+  "max_per_primary_source": 3,
+  "near_neighbor_min_jaccard": 0.5,
+  "anchors": [
+    "Data Pribadi",
+    "Pengendali Data Pribadi",
+    "Perseroan Terbatas",
+    "Direksi",
+    "Dewan Komisaris",
+    "Badan Usaha",
+    "Konsumen",
+    "Hukum Adat",
+    "Masyarakat Hukum Adat",
+    "Jaminan Fidusia"
+  ],
+  "quotas": {
+    "anchor": 10,
+    "multi_sense": 2,
+    "domain_focus": 10,
+    "near_neighbor": 8,
+    "alias": 6,
+    "numeric": 4,
+    "long_definition": 5,
+    "typical_fill": 5
+  },
+  "domain_keywords": [
+    "badan usaha",
+    "bank",
+    "data",
+    "debitur",
+    "direksi",
+    "dokumen perusahaan",
+    "jaminan",
+    "konsumen",
+    "kredit",
+    "modal",
+    "pajak",
+    "pekerja",
+    "pemberi kerja",
+    "pengendali",
+    "perjanjian",
+    "perusahaan",
+    "perseroan",
+    "saham",
+    "usaha"
+  ]
+}

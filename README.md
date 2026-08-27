@@ -6,7 +6,8 @@
 
 - P0.0 — kontrak eksperimen: **selesai**
 - P0.1 — scaffold reproducible: **selesai**
-- P0.2 — audit dan normalisasi kamus: **pipeline tersedia; lihat `c5-model status` untuk hasil run**
+- P0.2 — audit dan normalisasi kamus: **selesai**
+- P0.3 — pemilihan pilot 50 istilah: **pipeline tersedia; lihat `c5-model status` untuk hasil run**
 
 Tidak ada model, embedding, atau dataset Hugging Face yang diproses pada P0.2.
 
@@ -78,6 +79,17 @@ Perintah tersebut memverifikasi input tidak berubah, membuang duplikat persis,
 memisahkan record yang belum terverifikasi, membuat `retrieval_text`, menulis
 CSV/Parquet hasil antara, memperbarui manifest, dan menghasilkan laporan audit.
 
+Pilih pilot P0.3 setelah P0.2 selesai:
+
+```bash
+uv run c5-model select-pilot
+```
+
+Selector mengunci anchor yang disepakati, mengecualikan quarantine dan
+normalization warning, membatasi dominasi satu sumber, lalu mengisi slot dari
+multi-sense, domain focus, near-neighbor, alias, angka, definisi panjang, dan
+kasus tipikal. Seluruh hasil masih `pending_review`.
+
 ## Data handling
 
 - Data mentah tidak diubah di tempat.
@@ -89,7 +101,7 @@ CSV/Parquet hasil antara, memperbarui manifest, dan menghasilkan laporan audit.
 
 ## Tahap berikutnya
 
-Setelah P0.2 berhasil dan hasilnya ditinjau, P0.3 memilih pilot 50 istilah.
+Setelah P0.3 berhasil dan pilot ditinjau, P0.4 melakukan source enrichment.
 
 Artefak P0.2 yang dihasilkan secara lokal:
 
@@ -101,4 +113,14 @@ data/interim/quarantined_records.parquet
 data/interim/duplicate_records.csv
 reports/p0/csv-audit.md
 reports/p0/p0-2-run.json
+```
+
+Artefak P0.3 yang dihasilkan secara lokal:
+
+```text
+data/curated/pilot_terms.csv
+data/curated/pilot_terms.parquet
+data/curated/pilot_review_queue.csv
+manifests/pilot-selection.json
+reports/p0/pilot-selection.md
 ```
