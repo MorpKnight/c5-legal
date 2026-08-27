@@ -56,6 +56,7 @@ CANDIDATE_COLUMNS = (
     "exact_definition_match",
     "definition_token_coverage",
     "title_similarity",
+    "metadata_warnings",
     "candidate_status",
 )
 
@@ -76,6 +77,7 @@ ENRICHED_COLUMNS = (
     "top_exact_definition_match",
     "top_definition_token_coverage",
     "top_title_similarity",
+    "top_metadata_warnings",
     "dataset_repository",
     "dataset_revision",
     "verification_status",
@@ -95,6 +97,7 @@ REVIEW_COLUMNS = (
     "top_dataset_global_id",
     "top_article",
     "top_definition_token_coverage",
+    "top_metadata_warnings",
     "verification_status",
     "official_source_url",
     "review_status",
@@ -128,6 +131,8 @@ def load_config(path: Path) -> dict[str, Any]:
         raise ValueError("P0.4 source must remain candidate enrichment only")
     if config["maximum_candidates_per_term"] < 1:
         raise ValueError("maximum_candidates_per_term must be positive")
+    if not 0 <= config["minimum_title_similarity"] <= 1:
+        raise ValueError("minimum_title_similarity must be between zero and one")
     return config
 
 
@@ -160,6 +165,21 @@ def title_similarity(source_title: str, candidate_title: str) -> float:
         normalize_key(source_title),
         normalize_key(candidate_title),
     ).ratio()
+
+
+def metadata_warnings(
+    *,
+    exact_definition_match: bool,
+    article: str,
+    title_score: float,
+    minimum_title_similarity: float,
+) -> str:
+    warnings: list[str] = []
+    if title_score < minimum_title_similarity:
+        warnings.append("low_title_similarity")
+    if exact_definition_match and not normalize_key(article).startswith("pasal"):
+        warnings.append("definition_found_in_non_article_metadata")
+    return "|".join(warnings)
 
 
 def write_csv(path: Path, rows: Iterable[dict[str, Any]], columns: tuple[str, ...]) -> None:
@@ -285,6 +305,10 @@ def render_report(summary: dict[str, Any]) -> str:
         f"- {row['canonical_term']} — `{row['match_status']}` — {row['primary_regulation_label']}"
         for row in summary["unresolved_terms"]
     ) or "- Tidak ada"
+    matched_lines = "\n".join(
+        f"- {row['canonical_term']} — `{row['match_status']}` — `{row['top_article'] or '(missing)'}` — warning: `{row['top_metadata_warnings'] or 'none'}`"
+        for row in summary["matched_terms"]
+    ) or "- Tidak ada"
 
     return f"""# P0.4 Source Enrichment
 
@@ -316,9 +340,14 @@ Tidak ada record yang dinaikkan menjadi `verified`. Hasil ini menunjukkan datase
 - Term-in-regulation coverage: {summary['term_coverage']:.1%}
 - Exact source-definition matches: {summary['exact_definition_terms']}
 - High token-coverage candidates: {summary['high_coverage_terms']}
+- Terms with candidate metadata warnings: {summary['terms_with_candidate_metadata_warnings']}
 - Officially verified records: {summary['officially_verified_terms']}
 - Every enriched term remains `pending_review`: `{str(summary['all_pending_review']).lower()}`
 - KG source decision: `{summary['kg_probe']['decision']}`
+
+## Matched candidates
+
+{matched_lines}
 
 ## Unresolved terms
 
@@ -393,6 +422,13 @@ def enrich_sources(
                 source_definition,
                 corpus_row["content"],
             )
+            candidate_title_similarity = round(
+                title_similarity(
+                    pilot_row["primary_regulation_title"],
+                    corpus_row["about"],
+                ),
+                6,
+            )
             ranked.append(
                 {
                     "candidate_id": candidate_id,
@@ -414,12 +450,12 @@ def enrich_sources(
                     "term_present": term_present,
                     "exact_definition_match": exact_definition_match,
                     "definition_token_coverage": round(coverage, 6),
-                    "title_similarity": round(
-                        title_similarity(
-                            pilot_row["primary_regulation_title"],
-                            corpus_row["about"],
-                        ),
-                        6,
+                    "title_similarity": candidate_title_similarity,
+                    "metadata_warnings": metadata_warnings(
+                        exact_definition_match=exact_definition_match,
+                        article=corpus_row["article"],
+                        title_score=candidate_title_similarity,
+                        minimum_title_similarity=config["minimum_title_similarity"],
                     ),
                     "candidate_status": "candidate_unverified",
                 }
@@ -458,6 +494,7 @@ def enrich_sources(
                 "top_exact_definition_match": top["exact_definition_match"] if top else False,
                 "top_definition_token_coverage": top["definition_token_coverage"] if top else 0.0,
                 "top_title_similarity": top["title_similarity"] if top else 0.0,
+                "top_metadata_warnings": top["metadata_warnings"] if top else "",
                 "dataset_repository": source["repository"],
                 "dataset_revision": source["revision"],
                 "verification_status": config["verification_status"],
@@ -504,6 +541,7 @@ def enrich_sources(
         and row["top_definition_token_coverage"] >= config["high_definition_token_coverage"]
         for row in enriched_rows
     )
+    metadata_warning_terms = sum(bool(row["top_metadata_warnings"]) for row in enriched_rows)
     generated_at = datetime.now(timezone.utc).isoformat()
     summary: dict[str, Any] = {
         "schema_version": 1,
@@ -528,10 +566,23 @@ def enrich_sources(
         "term_coverage": term_matched / len(enriched_rows) if enriched_rows else 0.0,
         "exact_definition_terms": exact_definition_terms,
         "high_coverage_terms": high_coverage_terms,
+        "terms_with_candidate_metadata_warnings": metadata_warning_terms,
         "officially_verified_terms": 0,
         "all_pending_review": all(row["review_status"] == "pending_review" for row in enriched_rows),
         "candidate_row_count": len(candidate_rows),
         "match_status_counts": status_counts,
+        "matched_terms": [
+            {
+                "pilot_index": row["pilot_index"],
+                "term_id": row["term_id"],
+                "canonical_term": row["canonical_term"],
+                "match_status": row["match_status"],
+                "top_article": row["top_article"],
+                "top_metadata_warnings": row["top_metadata_warnings"],
+            }
+            for row in enriched_rows
+            if row["term_candidate_count"] > 0
+        ],
         "unresolved_terms": [
             {
                 "pilot_index": row["pilot_index"],

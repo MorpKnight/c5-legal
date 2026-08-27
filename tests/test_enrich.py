@@ -101,6 +101,7 @@ class SourceEnrichmentTests(unittest.TestCase):
                 },
                 "maximum_candidates_per_term": 2,
                 "high_definition_token_coverage": 0.8,
+                "minimum_title_similarity": 0.8,
                 "verification_status": "needs_official_source_review",
             }
             config_path.write_text(json.dumps(config), encoding="utf-8")
@@ -131,6 +132,10 @@ class SourceEnrichmentTests(unittest.TestCase):
                 (enriched["verification_status"] == "needs_official_source_review").all()
             )
             self.assertTrue((enriched["review_status"] == "pending_review").all())
+            self.assertEqual(
+                enriched.filter(pl.col("term_id") == "term_data")["top_metadata_warnings"][0],
+                "",
+            )
 
 
 if __name__ == "__main__":

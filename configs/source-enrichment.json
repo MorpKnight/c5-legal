@@ -22,5 +22,6 @@
   },
   "maximum_candidates_per_term": 3,
   "high_definition_token_coverage": 0.8,
+  "minimum_title_similarity": 0.8,
   "verification_status": "needs_official_source_review"
 }
