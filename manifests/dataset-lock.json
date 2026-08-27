@@ -15,9 +15,27 @@
       "row_count": 3825,
       "sha256": "b5ef1135091837f0fa1ee115a6d03cb887a8dae0afd0614b4c1c5f7f680122d4",
       "size_bytes": 1520259
+    },
+    {
+      "authority_role": "candidate_enrichment_only",
+      "dataset_id": "hf_id_reg_md_rag",
+      "input_path": "data/raw/huggingface/ID_REG_MD_RAG/ba099d603c1f4ce044795ecbb79a6e4fd172de2f/train.parquet",
+      "outputs": {
+        "data/curated/pilot_terms_enriched.csv": "595bcfe57212a340b817f23625a1658a5943fa29e29f2a8f96f9b7ba630d6467",
+        "data/curated/pilot_terms_enriched.parquet": "12c61920e8ec0699710188298a15eba13a74ecf01519e23f3eeb83567b99169c",
+        "data/curated/source_review_queue.csv": "a649233f7f6dd4bdce9dc81da9d0b87d277a411038e137bb8a9f5022a1266d6a",
+        "data/interim/source_candidates.csv": "2bdf4278dc766d8523345d94143238bdec43e152407231f244c5e51b6d74f03f",
+        "data/interim/source_candidates.parquet": "7b89187bebbcdc94976eb79e6ace299d92e4b30a0ac84999c2b6645f738590fc"
+      },
+      "repository": "Azzindani/ID_REG_MD_RAG",
+      "revision": "ba099d603c1f4ce044795ecbb79a6e4fd172de2f",
+      "row_count": 199994,
+      "sha256": "e2411e85da1809e86694a477ab1f7e071e0fce7e95c35c12d12b38863974b367",
+      "size_bytes": 1321055102
     }
   ],
-  "note": "Only the local seed glossary is locked. Hugging Face sources remain pending/deferred.",
+  "note": "Local glossary and ID_REG_MD_RAG snapshot are locked. External regulation rows remain candidate evidence and are not official verification.",
   "schema_version": 1,
-  "status": "seed_locked"
+  "status": "p0_4_source_snapshot_locked",
+  "updated_at": "2026-08-27T04:24:10.521301+00:00"
 }

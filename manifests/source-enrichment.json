@@ -1,0 +1,407 @@
+{
+  "all_pending_review": true,
+  "candidate_row_count": 12,
+  "config_path": "configs/source-enrichment.json",
+  "config_sha256": "a799cfda978a7e675d432d0c8f64bbdbd03ed3a0ee25dce44396980b147cf38b",
+  "exact_definition_terms": 3,
+  "generated_at": "2026-08-27T04:24:10.521301+00:00",
+  "high_coverage_terms": 4,
+  "identity_coverage": 0.08,
+  "identity_matched_terms": 4,
+  "kg_probe": {
+    "decision": "deferred_after_probe",
+    "reason": "Derived KG, embedding, and TF-IDF fields are unnecessary for source identity enrichment; Dataset Viewer search was partial and exposed inconsistent regulation metadata.",
+    "repository": "Azzindani/ID_REG_KG_2511",
+    "revision": "26040ed717deca87d42fb6e72a3debcd3f1b1de1",
+    "row_count": 748558,
+    "size_bytes": 7918526230,
+    "source_id": "hf_id_reg_kg_2511"
+  },
+  "match_status_counts": {
+    "candidate_exact_definition": 3,
+    "candidate_high_coverage": 1,
+    "regulation_not_found": 46
+  },
+  "matched_terms": [
+    {
+      "canonical_term": "Jaminan Fidusia",
+      "match_status": "candidate_exact_definition",
+      "pilot_index": 6,
+      "term_id": "term_b44f4ecb8747d3c6",
+      "top_article": "Pasal 1",
+      "top_metadata_warnings": "low_title_similarity"
+    },
+    {
+      "canonical_term": "Konsumen",
+      "match_status": "candidate_exact_definition",
+      "pilot_index": 7,
+      "term_id": "term_67664308b0a2cbc4",
+      "top_article": "Pasal 1",
+      "top_metadata_warnings": ""
+    },
+    {
+      "canonical_term": "Nasabah Debitur",
+      "match_status": "candidate_exact_definition",
+      "pilot_index": 18,
+      "term_id": "term_f281a102d467c342",
+      "top_article": "Preamble",
+      "top_metadata_warnings": "definition_found_in_non_article_metadata"
+    },
+    {
+      "canonical_term": "Penyelenggaraan Telekomunikasi",
+      "match_status": "candidate_high_coverage",
+      "pilot_index": 50,
+      "term_id": "term_fec146dddb83db23",
+      "top_article": "Pasal 1",
+      "top_metadata_warnings": ""
+    }
+  ],
+  "officially_verified_terms": 0,
+  "output_hashes": {
+    "data/curated/pilot_terms_enriched.csv": "595bcfe57212a340b817f23625a1658a5943fa29e29f2a8f96f9b7ba630d6467",
+    "data/curated/pilot_terms_enriched.parquet": "12c61920e8ec0699710188298a15eba13a74ecf01519e23f3eeb83567b99169c",
+    "data/curated/source_review_queue.csv": "a649233f7f6dd4bdce9dc81da9d0b87d277a411038e137bb8a9f5022a1266d6a",
+    "data/interim/source_candidates.csv": "2bdf4278dc766d8523345d94143238bdec43e152407231f244c5e51b6d74f03f",
+    "data/interim/source_candidates.parquet": "7b89187bebbcdc94976eb79e6ace299d92e4b30a0ac84999c2b6645f738590fc"
+  },
+  "pilot_path": "data/curated/pilot_terms.parquet",
+  "pilot_sha256": "a78b26903b9b4b499e7a950487d8622c3426693d7e5e8615d14b3db128eec2f1",
+  "pilot_term_count": 50,
+  "schema_version": 1,
+  "source_authority_role": "candidate_enrichment_only",
+  "source_license_claim": "CC-BY-4.0",
+  "source_path": "data/raw/huggingface/ID_REG_MD_RAG/ba099d603c1f4ce044795ecbb79a6e4fd172de2f/train.parquet",
+  "source_repository": "Azzindani/ID_REG_MD_RAG",
+  "source_revision": "ba099d603c1f4ce044795ecbb79a6e4fd172de2f",
+  "source_row_count": 199994,
+  "source_sha256": "e2411e85da1809e86694a477ab1f7e071e0fce7e95c35c12d12b38863974b367",
+  "source_size_bytes": 1321055102,
+  "status": "p0_4_complete",
+  "term_coverage": 0.08,
+  "term_matched_terms": 4,
+  "terms_with_candidate_metadata_warnings": 2,
+  "unresolved_terms": [
+    {
+      "canonical_term": "Badan Usaha",
+      "match_status": "regulation_not_found",
+      "pilot_index": 1,
+      "primary_regulation_label": "Undang-Undang Nomor 11 Tahun 2020",
+      "term_id": "term_eceaff18cc63e78e"
+    },
+    {
+      "canonical_term": "Data Pribadi",
+      "match_status": "regulation_not_found",
+      "pilot_index": 2,
+      "primary_regulation_label": "Undang-Undang Nomor 27 Tahun 2022",
+      "term_id": "term_b5f759d772843a00"
+    },
+    {
+      "canonical_term": "Dewan Komisaris",
+      "match_status": "regulation_not_found",
+      "pilot_index": 3,
+      "primary_regulation_label": "Undang-Undang Nomor 40 Tahun 2007",
+      "term_id": "term_927ba89f3b5fd9e8"
+    },
+    {
+      "canonical_term": "Direksi",
+      "match_status": "regulation_not_found",
+      "pilot_index": 4,
+      "primary_regulation_label": "Undang-Undang Nomor 40 Tahun 2007",
+      "term_id": "term_d69294b393081c91"
+    },
+    {
+      "canonical_term": "Hukum Adat",
+      "match_status": "regulation_not_found",
+      "pilot_index": 5,
+      "primary_regulation_label": "Undang-Undang Nomor 21 Tahun 2001",
+      "term_id": "term_1718d6ae301a730d"
+    },
+    {
+      "canonical_term": "Masyarakat Hukum Adat",
+      "match_status": "regulation_not_found",
+      "pilot_index": 8,
+      "primary_regulation_label": "Undang-Undang Nomor 32 Tahun 2009",
+      "term_id": "term_9c253ddb396abcc9"
+    },
+    {
+      "canonical_term": "Pengendali Data Pribadi",
+      "match_status": "regulation_not_found",
+      "pilot_index": 9,
+      "primary_regulation_label": "Undang-Undang Nomor 27 Tahun 2022",
+      "term_id": "term_10dc954c15de499f"
+    },
+    {
+      "canonical_term": "Perseroan Terbatas",
+      "match_status": "regulation_not_found",
+      "pilot_index": 10,
+      "primary_regulation_label": "Undang-Undang Nomor 40 Tahun 2007",
+      "term_id": "term_76986a3fe85daaf9"
+    },
+    {
+      "canonical_term": "Kode Etik Jurnalistik",
+      "match_status": "regulation_not_found",
+      "pilot_index": 11,
+      "primary_regulation_label": "Peraturan Presiden Nomor 32 Tahun 2024",
+      "term_id": "term_c66f182674554df1"
+    },
+    {
+      "canonical_term": "Lembaga Penyedia Layanan Peningkatan Kualitas Keluarga",
+      "match_status": "regulation_not_found",
+      "pilot_index": 12,
+      "primary_regulation_label": "Peraturan Menteri Pemberdayaan Perempuan dan Perlindungan Anak Nomor 3 Tahun 2023",
+      "term_id": "term_ed6f8d7aef1eba60"
+    },
+    {
+      "canonical_term": "Dokumen Elektronik",
+      "match_status": "regulation_not_found",
+      "pilot_index": 13,
+      "primary_regulation_label": "Undang-Undang Nomor 19 Tahun 2016",
+      "term_id": "term_67ec5bf791ab42b2"
+    },
+    {
+      "canonical_term": "Informasi Elektronik",
+      "match_status": "regulation_not_found",
+      "pilot_index": 14,
+      "primary_regulation_label": "Undang-Undang Nomor 19 Tahun 2016",
+      "term_id": "term_029eca521eb64f7e"
+    },
+    {
+      "canonical_term": "Kesejahteraan Pekerja/Buruh",
+      "match_status": "regulation_not_found",
+      "pilot_index": 15,
+      "primary_regulation_label": "Undang-Undang Nomor 13 Tahun 2003",
+      "term_id": "term_4ec3eb2986d900d0"
+    },
+    {
+      "canonical_term": "Kontrak Kerja Konstruksi",
+      "match_status": "regulation_not_found",
+      "pilot_index": 16,
+      "primary_regulation_label": "Undang-Undang Nomor 2 Tahun 2017",
+      "term_id": "term_048a519d4ca4d245"
+    },
+    {
+      "canonical_term": "Korporasi",
+      "match_status": "regulation_not_found",
+      "pilot_index": 17,
+      "primary_regulation_label": "Undang-Undang Nomor 9 Tahun 2013",
+      "term_id": "term_66a23fc5a37a542d"
+    },
+    {
+      "canonical_term": "Pelaku Usaha Sektor Keuangan",
+      "match_status": "regulation_not_found",
+      "pilot_index": 19,
+      "primary_regulation_label": "Undang-Undang Nomor 4 Tahun 2023",
+      "term_id": "term_bdc2841c74520eb9"
+    },
+    {
+      "canonical_term": "Perjanjian Internasional",
+      "match_status": "regulation_not_found",
+      "pilot_index": 20,
+      "primary_regulation_label": "Undang-Undang Nomor 24 Tahun 2000",
+      "term_id": "term_8980a6aa332d5444"
+    },
+    {
+      "canonical_term": "Prosesor Data Pribadi",
+      "match_status": "regulation_not_found",
+      "pilot_index": 21,
+      "primary_regulation_label": "Undang-Undang Nomor 27 Tahun 2022",
+      "term_id": "term_c0324852f3cdd188"
+    },
+    {
+      "canonical_term": "Tanda Tangan Elektronik",
+      "match_status": "regulation_not_found",
+      "pilot_index": 22,
+      "primary_regulation_label": "Undang-Undang Nomor 19 Tahun 2016",
+      "term_id": "term_3f07504c1e59b82d"
+    },
+    {
+      "canonical_term": "Bahan Kimia Daftar 1",
+      "match_status": "regulation_not_found",
+      "pilot_index": 23,
+      "primary_regulation_label": "Undang-Undang Nomor 9 Tahun 2008",
+      "term_id": "term_5548a73dfb3ccb65"
+    },
+    {
+      "canonical_term": "Bahan Kimia Daftar 3",
+      "match_status": "regulation_not_found",
+      "pilot_index": 24,
+      "primary_regulation_label": "Undang-Undang Nomor 9 Tahun 2008",
+      "term_id": "term_55dee9f5ce0c6056"
+    },
+    {
+      "canonical_term": "Bank dalam Likuidasi",
+      "match_status": "regulation_not_found",
+      "pilot_index": 25,
+      "primary_regulation_label": "Peraturan Lembaga Penjamin Simpanan Nomor 1 Tahun 2022",
+      "term_id": "term_04520113742320ea"
+    },
+    {
+      "canonical_term": "Bebas dari Tera dan Tera Ulang",
+      "match_status": "regulation_not_found",
+      "pilot_index": 26,
+      "primary_regulation_label": "Peraturan Menteri Perdagangan Nomor 24 Tahun 2024",
+      "term_id": "term_de4b97867290b5eb"
+    },
+    {
+      "canonical_term": "Bebas dari Tera Ulang",
+      "match_status": "regulation_not_found",
+      "pilot_index": 27,
+      "primary_regulation_label": "Peraturan Menteri Perdagangan Nomor 24 Tahun 2024",
+      "term_id": "term_da3afb778ea5945c"
+    },
+    {
+      "canonical_term": "Kapal Penumpang di Bawah Permukaan Air (Passenger Submersible Craft)",
+      "match_status": "regulation_not_found",
+      "pilot_index": 28,
+      "primary_regulation_label": "Peraturan Menteri Perhubungan Nomor PM 6 Tahun 2022",
+      "term_id": "term_628b96183884e0e8"
+    },
+    {
+      "canonical_term": "Kelaiklautan Kapal Penumpang di Bawah Permukaan Air (Passenger Submersible Craft)",
+      "match_status": "regulation_not_found",
+      "pilot_index": 29,
+      "primary_regulation_label": "Peraturan Menteri Perhubungan Nomor PM 6 Tahun 2022",
+      "term_id": "term_b7d69756063dd54e"
+    },
+    {
+      "canonical_term": "Likuidasi Bank",
+      "match_status": "regulation_not_found",
+      "pilot_index": 30,
+      "primary_regulation_label": "Peraturan Lembaga Penjamin Simpanan Nomor 1 Tahun 2022",
+      "term_id": "term_f3f898a88b11afba"
+    },
+    {
+      "canonical_term": "Benih Bening Lobster (puerulus)",
+      "match_status": "regulation_not_found",
+      "pilot_index": 31,
+      "primary_regulation_label": "Peraturan Menteri Kelautan dan Perikanan Nomor 7 Tahun 2024",
+      "term_id": "term_e190bdab14b2e671"
+    },
+    {
+      "canonical_term": "Dana Reboisasi",
+      "match_status": "regulation_not_found",
+      "pilot_index": 32,
+      "primary_regulation_label": "Peraturan Pemerintah Nomor 23 Tahun 2021",
+      "term_id": "term_4fecd5792aee1f07"
+    },
+    {
+      "canonical_term": "Factoring With Recourse",
+      "match_status": "regulation_not_found",
+      "pilot_index": 33,
+      "primary_regulation_label": "Peraturan Otoritas Jasa Keuangan Nomor 35/POJK.05/2018",
+      "term_id": "term_58c8007aaf06eddf"
+    },
+    {
+      "canonical_term": "Klien Pemasyarakatan",
+      "match_status": "regulation_not_found",
+      "pilot_index": 34,
+      "primary_regulation_label": "Undang-Undang Nomor 22 Tahun 2022",
+      "term_id": "term_e4a2a510b987aa82"
+    },
+    {
+      "canonical_term": "Manual Operasi Penyelenggara Perancangan Prosedur Penerbangan",
+      "match_status": "regulation_not_found",
+      "pilot_index": 35,
+      "primary_regulation_label": "Peraturan Menteri Perhubungan Nomor PM 11 Tahun 2022",
+      "term_id": "term_afbe17d85bd000ba"
+    },
+    {
+      "canonical_term": "Pernyataan Standar Akuntansi Pemerintahan",
+      "match_status": "regulation_not_found",
+      "pilot_index": 36,
+      "primary_regulation_label": "Peraturan Pemerintah Nomor 71 Tahun 2010",
+      "term_id": "term_e0dcd7da7e364a0e"
+    },
+    {
+      "canonical_term": "Air Minum pH Tinggi",
+      "match_status": "regulation_not_found",
+      "pilot_index": 37,
+      "primary_regulation_label": "Peraturan Menteri Perindustrian Nomor 62 Tahun 2024",
+      "term_id": "term_54bda0c010171570"
+    },
+    {
+      "canonical_term": "Entitas Induk yang Dimiliki Sebagian (Partially-Owned Parent Entity)",
+      "match_status": "regulation_not_found",
+      "pilot_index": 38,
+      "primary_regulation_label": "Peraturan Menteri Keuangan Nomor 136 Tahun 2024",
+      "term_id": "term_e9fa74e7f9fdbb48"
+    },
+    {
+      "canonical_term": "Nomor UN (UN Number)",
+      "match_status": "regulation_not_found",
+      "pilot_index": 39,
+      "primary_regulation_label": "Peraturan Menteri Perhubungan Nomor PM 32 Tahun 2022",
+      "term_id": "term_99ef399cd17d2d50"
+    },
+    {
+      "canonical_term": "Pengakhiran Transaksi Keuangan melalui Perjumpaan Utang",
+      "match_status": "regulation_not_found",
+      "pilot_index": 40,
+      "primary_regulation_label": "Peraturan Bank Indonesia Nomor 12 Tahun 2023",
+      "term_id": "term_b03a2d0180607212"
+    },
+    {
+      "canonical_term": "Gender",
+      "match_status": "regulation_not_found",
+      "pilot_index": 41,
+      "primary_regulation_label": "Peraturan Menteri Pemberdayaan Perempuan dan Perlindungan Anak Nomor 13 Tahun 2021",
+      "term_id": "term_de9feaea8b66f7ba"
+    },
+    {
+      "canonical_term": "Kosmetik",
+      "match_status": "regulation_not_found",
+      "pilot_index": 42,
+      "primary_regulation_label": "Peraturan Pemerintah Nomor 28 Tahun 2024",
+      "term_id": "term_e56d68bdda367dc1"
+    },
+    {
+      "canonical_term": "Layanan Pengiriman Elektronik Tercatat",
+      "match_status": "regulation_not_found",
+      "pilot_index": 43,
+      "primary_regulation_label": "Peraturan Menteri Komunikasi dan Informatika Nomor 11 Tahun 2022",
+      "term_id": "term_6dbae959a55f64b8"
+    },
+    {
+      "canonical_term": "Musyawarah Penetapan Ganti Kerugian",
+      "match_status": "regulation_not_found",
+      "pilot_index": 44,
+      "primary_regulation_label": "Peraturan Mahkamah Agung Nomor 2 Tahun 2021",
+      "term_id": "term_99cf2b3e279a0e5c"
+    },
+    {
+      "canonical_term": "Perselisihan Hubungan Industrial",
+      "match_status": "regulation_not_found",
+      "pilot_index": 45,
+      "primary_regulation_label": "Undang-Undang Nomor 2 Tahun 2004",
+      "term_id": "term_5b2d8d0836be6fac"
+    },
+    {
+      "canonical_term": "Arsitektur",
+      "match_status": "regulation_not_found",
+      "pilot_index": 46,
+      "primary_regulation_label": "Undang-Undang Nomor 6 Tahun 2017",
+      "term_id": "term_81bf5b271bdd9a16"
+    },
+    {
+      "canonical_term": "Badan Amil Zakat Nasional",
+      "match_status": "regulation_not_found",
+      "pilot_index": 47,
+      "primary_regulation_label": "Undang-Undang Nomor 23 Tahun 2011",
+      "term_id": "term_a3516e200e37f33b"
+    },
+    {
+      "canonical_term": "Efek Bersifat Utang Terkait Keberlanjutan (sustainability-linked bond) dan/atau Sukuk Terkait Keberlanjutan (sustainability-linked sukuk)",
+      "match_status": "regulation_not_found",
+      "pilot_index": 48,
+      "primary_regulation_label": "Peraturan Otoritas Jasa Keuangan Nomor 18 Tahun 2023",
+      "term_id": "term_0db329eb599c9649"
+    },
+    {
+      "canonical_term": "Lingkungan Hidup",
+      "match_status": "regulation_not_found",
+      "pilot_index": 49,
+      "primary_regulation_label": "Undang-Undang Nomor 32 Tahun 2009",
+      "term_id": "term_863c18bbf2da1546"
+    }
+  ]
+}
