@@ -44,6 +44,7 @@ OUTPUT_COLUMNS = (
     "source_definition",
     "retrieval_text",
     "retrieval_prefix_removed",
+    "normalization_warning",
     "regulation_label",
     "regulation_type",
     "regulation_number",
@@ -87,7 +88,7 @@ def exact_key(row: dict[str, str]) -> tuple[str, ...]:
     return tuple(normalize_key(row[column]) for column in RAW_COLUMNS)
 
 
-def quarantine_reason(row: dict[str, str]) -> str:
+def quarantine_reason(row: dict[str, str], regulation: dict[str, str]) -> str:
     missing = [column for column in ("istilah", "pengertian", "undang_undang") if not normalize_key(row[column])]
     if missing:
         return "missing_required:" + ",".join(missing)
@@ -95,6 +96,8 @@ def quarantine_reason(row: dict[str, str]) -> str:
         return "source_unverified"
     if not normalize_key(row["uu"]):
         return "missing_regulation_title"
+    if not regulation["regulation_number"] or not regulation["regulation_year"]:
+        return "unparseable_regulation_identity"
     return ""
 
 
@@ -106,7 +109,7 @@ def build_record(row: dict[str, str], duplicate_count: int) -> dict[str, Any]:
     source_status = normalize_display_text(row["status"])
     regulation = parse_regulation_label(row["undang_undang"])
     retrieval_text, prefix_removed = strip_term_prefix(canonical_term, source_definition)
-    reason = quarantine_reason(row)
+    reason = quarantine_reason(row, regulation)
 
     term_id = stable_id("term", canonical_term)
     source_id = stable_id(
@@ -134,6 +137,7 @@ def build_record(row: dict[str, str], duplicate_count: int) -> dict[str, Any]:
         "source_definition": source_definition,
         "retrieval_text": retrieval_text,
         "retrieval_prefix_removed": prefix_removed,
+        "normalization_warning": "" if prefix_removed else "term_prefix_not_found",
         **regulation,
         "regulation_title": regulation_title,
         "source_url": source_url,
@@ -183,6 +187,9 @@ def render_report(stats: dict[str, Any], multi_sense_terms: list[str]) -> str:
     )
     host_lines = "\n".join(
         f"- `{host or '(missing)'}`: {count}" for host, count in stats["source_hosts"].items()
+    )
+    quarantine_lines = "\n".join(
+        f"- `{reason}`: {count}" for reason, count in stats["quarantine_reason_counts"].items()
     )
     sense_lines = "\n".join(f"- {term}" for term in multi_sense_terms) or "- Tidak ada"
 
@@ -234,6 +241,10 @@ Hasil ini adalah audit teknis. Status `candidate_secondary_source` bukan verifik
 ## Source hosts
 
 {host_lines}
+
+## Quarantine reasons
+
+{quarantine_lines}
 
 ## Terms with multiple distinct sense/source records
 
@@ -382,6 +393,9 @@ def run_audit(
     }
     status_counts = dict(sorted(Counter(normalize_display_text(row["status"]) for row in raw_rows).items()))
     source_hosts = dict(sorted(Counter(record["source_host"] for record in records).items()))
+    quarantine_reason_counts = dict(
+        sorted(Counter(record["quarantine_reason"] for record in quarantined).items())
+    )
 
     output_hashes = {
         str(path): sha256_file(path)
@@ -422,6 +436,7 @@ def run_audit(
         "missing_fields": missing_fields,
         "status_counts": status_counts,
         "source_hosts": source_hosts,
+        "quarantine_reason_counts": quarantine_reason_counts,
         "multi_sense_terms": multi_sense_terms,
         "output_hashes": output_hashes,
         "runtime": {

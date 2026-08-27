@@ -7,7 +7,7 @@ from pathlib import Path
 
 import polars as pl
 
-from c5_model.audit import run_audit
+from c5_model.audit import quarantine_reason, run_audit
 from c5_model.cli import PROJECT_ROOT
 from c5_model.normalize import parse_regulation_label, strip_term_prefix
 
@@ -47,6 +47,27 @@ class NormalizeTests(unittest.TestCase):
 
 
 class AuditTests(unittest.TestCase):
+    def test_unparseable_regulation_identity_is_quarantined(self) -> None:
+        row = {
+            "istilah": "Istilah Rusak",
+            "pengertian": "Istilah Rusak adalah contoh.",
+            "undang_undang": "Bukan Identitas Regulasi",
+            "uu": "Judul Contoh",
+            "url": "https://example.invalid/rusak",
+            "status": "OK",
+        }
+        regulation = {
+            "regulation_label": "Bukan Identitas Regulasi",
+            "regulation_type": "Bukan Identitas Regulasi",
+            "regulation_number": "",
+            "regulation_year": "",
+        }
+
+        self.assertEqual(
+            quarantine_reason(row, regulation),
+            "unparseable_regulation_identity",
+        )
+
     def test_fixture_audit_is_deterministic_and_quarantines_unverified(self) -> None:
         source = PROJECT_ROOT / "data/samples/kamus_hukum_fixture.csv"
         original_hash = hashlib.sha256(source.read_bytes()).hexdigest()
