@@ -8,6 +8,7 @@
 - P0.1 — scaffold reproducible: **selesai**
 - P0.2 — audit dan normalisasi kamus: **selesai**
 - P0.3 — pemilihan pilot 50 istilah: **pipeline tersedia; lihat `c5-model status` untuk hasil run**
+- P0.4 — source enrichment kandidat: **pipeline tersedia; lihat `c5-model status` untuk hasil run**
 
 Tidak ada model, embedding, atau dataset Hugging Face yang diproses pada P0.2.
 
@@ -90,6 +91,25 @@ quarantine dan normalization warning, membatasi dominasi satu sumber, lalu
 mengisi slot lain dari multi-sense, pasangan near-neighbor, alias, angka,
 definisi panjang, dan kasus tipikal. Seluruh hasil masih `pending_review`.
 
+Jalankan source enrichment P0.4 setelah snapshot yang dipin tersedia:
+
+```bash
+mkdir -p data/raw/huggingface/ID_REG_MD_RAG/ba099d603c1f4ce044795ecbb79a6e4fd172de2f
+curl -fL --retry 5 --continue-at - \
+  --output data/raw/huggingface/ID_REG_MD_RAG/ba099d603c1f4ce044795ecbb79a6e4fd172de2f/train.parquet \
+  "https://huggingface.co/datasets/Azzindani/ID_REG_MD_RAG/resolve/ba099d603c1f4ce044795ecbb79a6e4fd172de2f/train.parquet?download=true"
+printf '%s  %s\n' \
+  e2411e85da1809e86694a477ab1f7e071e0fce7e95c35c12d12b38863974b367 \
+  data/raw/huggingface/ID_REG_MD_RAG/ba099d603c1f4ce044795ecbb79a6e4fd172de2f/train.parquet \
+  | sha256sum -c -
+uv run c5-model enrich-sources
+```
+
+Pipeline mencocokkan jenis, nomor, dan tahun regulasi, lalu merangking paling
+banyak tiga kandidat pasal per istilah berdasarkan keberadaan istilah,
+kemiripan definisi, dan judul. Hasil Hugging Face hanya berstatus kandidat;
+tidak ada jalur otomatis menjadi `verified`.
+
 ## Data handling
 
 - Data mentah tidak diubah di tempat.
@@ -101,7 +121,8 @@ definisi panjang, dan kasus tipikal. Seluruh hasil masih `pending_review`.
 
 ## Tahap berikutnya
 
-Setelah P0.3 berhasil dan pilot ditinjau, P0.4 melakukan source enrichment.
+Setelah P0.4, P0.5 memeriksa kandidat terhadap sumber resmi dan menentukan
+record yang layak dipakai untuk authoring gold queries.
 
 Artefak P0.2 yang dihasilkan secara lokal:
 
@@ -123,4 +144,16 @@ data/curated/pilot_terms.parquet
 data/curated/pilot_review_queue.csv
 manifests/pilot-selection.json
 reports/p0/pilot-selection.md
+```
+
+Artefak P0.4 yang dihasilkan secara lokal:
+
+```text
+data/interim/source_candidates.csv
+data/interim/source_candidates.parquet
+data/curated/pilot_terms_enriched.csv
+data/curated/pilot_terms_enriched.parquet
+data/curated/source_review_queue.csv
+manifests/source-enrichment.json
+reports/p0/source-enrichment.md
 ```

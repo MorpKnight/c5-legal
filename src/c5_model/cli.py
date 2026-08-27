@@ -7,6 +7,8 @@ import json
 from pathlib import Path
 
 from c5_model.audit import default_paths, run_audit
+from c5_model.enrich import default_paths as default_enrichment_paths
+from c5_model.enrich import enrich_sources
 from c5_model.pilot import default_paths as default_pilot_paths
 from c5_model.pilot import select_pilot
 
@@ -15,6 +17,7 @@ PROJECT_ROOT = Path(__file__).resolve().parents[2]
 REQUIRED_PATHS = (
     "configs/p0.yaml",
     "configs/pilot-selection.json",
+    "configs/source-enrichment.json",
     "docs/p0-contract.md",
     "manifests/sources.json",
     "manifests/dataset-lock.json",
@@ -33,17 +36,27 @@ def scaffold_status() -> dict[str, object]:
         else {}
     )
     p0_3_complete = pilot_manifest.get("status") == "p0_3_complete"
+    enrichment_manifest_path = PROJECT_ROOT / "manifests/source-enrichment.json"
+    enrichment_manifest = (
+        json.loads(enrichment_manifest_path.read_text(encoding="utf-8"))
+        if enrichment_manifest_path.is_file()
+        else {}
+    )
+    p0_4_complete = enrichment_manifest.get("status") == "p0_4_complete"
     completed = ["P0.0", "P0.1"]
     if p0_2_complete:
         completed.append("P0.2")
     if p0_3_complete:
         completed.append("P0.3")
+    if p0_4_complete:
+        completed.append("P0.4")
     return {
         "phase": "P0",
         "completed": completed,
-        "next": "P0.4" if p0_3_complete else ("P0.3" if p0_2_complete else "P0.2"),
+        "next": "P0.5" if p0_4_complete else ("P0.4" if p0_3_complete else ("P0.3" if p0_2_complete else "P0.2")),
         "p0_2_complete": p0_2_complete,
         "p0_3_complete": p0_3_complete,
+        "p0_4_complete": p0_4_complete,
         "scaffold_ready": not missing,
         "missing_paths": missing,
     }
@@ -79,6 +92,31 @@ def main() -> None:
         "--manifest", type=Path, default=pilot_defaults["manifest_path"]
     )
     pilot_parser.add_argument("--report", type=Path, default=pilot_defaults["report_path"])
+    enrichment_parser = subparsers.add_parser(
+        "enrich-sources", help="Run P0.4 candidate source enrichment"
+    )
+    enrichment_defaults = default_enrichment_paths(PROJECT_ROOT)
+    enrichment_parser.add_argument(
+        "--pilot", type=Path, default=enrichment_defaults["pilot_path"]
+    )
+    enrichment_parser.add_argument(
+        "--source", type=Path, default=enrichment_defaults["source_path"]
+    )
+    enrichment_parser.add_argument(
+        "--config", type=Path, default=enrichment_defaults["config_path"]
+    )
+    enrichment_parser.add_argument(
+        "--interim-dir", type=Path, default=enrichment_defaults["interim_dir"]
+    )
+    enrichment_parser.add_argument(
+        "--curated-dir", type=Path, default=enrichment_defaults["curated_dir"]
+    )
+    enrichment_parser.add_argument(
+        "--manifest", type=Path, default=enrichment_defaults["manifest_path"]
+    )
+    enrichment_parser.add_argument(
+        "--report", type=Path, default=enrichment_defaults["report_path"]
+    )
     args = parser.parse_args()
 
     if args.command in (None, "status"):
@@ -101,6 +139,19 @@ def main() -> None:
             output_dir=args.output_dir,
             manifest_path=args.manifest,
             report_path=args.report,
+        )
+        print(json.dumps(summary, ensure_ascii=False, indent=2))
+    elif args.command == "enrich-sources":
+        summary = enrich_sources(
+            pilot_path=args.pilot,
+            source_path=args.source,
+            config_path=args.config,
+            interim_dir=args.interim_dir,
+            curated_dir=args.curated_dir,
+            manifest_path=args.manifest,
+            report_path=args.report,
+            sources_manifest_path=enrichment_defaults["sources_manifest_path"],
+            dataset_lock_path=enrichment_defaults["dataset_lock_path"],
         )
         print(json.dumps(summary, ensure_ascii=False, indent=2))
 

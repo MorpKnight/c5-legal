@@ -1,0 +1,26 @@
+{
+  "schema_version": 1,
+  "source": {
+    "source_id": "hf_id_reg_md_rag",
+    "repository": "Azzindani/ID_REG_MD_RAG",
+    "revision": "ba099d603c1f4ce044795ecbb79a6e4fd172de2f",
+    "filename": "train.parquet",
+    "relative_path": "data/raw/huggingface/ID_REG_MD_RAG/ba099d603c1f4ce044795ecbb79a6e4fd172de2f/train.parquet",
+    "expected_size_bytes": 1321055102,
+    "expected_sha256": "e2411e85da1809e86694a477ab1f7e071e0fce7e95c35c12d12b38863974b367",
+    "license_claim": "CC-BY-4.0",
+    "authority_role": "candidate_enrichment_only"
+  },
+  "kg_probe": {
+    "source_id": "hf_id_reg_kg_2511",
+    "repository": "Azzindani/ID_REG_KG_2511",
+    "revision": "26040ed717deca87d42fb6e72a3debcd3f1b1de1",
+    "row_count": 748558,
+    "size_bytes": 7918526230,
+    "decision": "deferred_after_probe",
+    "reason": "Derived KG, embedding, and TF-IDF fields are unnecessary for source identity enrichment; Dataset Viewer search was partial and exposed inconsistent regulation metadata."
+  },
+  "maximum_candidates_per_term": 3,
+  "high_definition_token_coverage": 0.8,
+  "verification_status": "needs_official_source_review"
+}

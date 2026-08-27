@@ -12,9 +12,10 @@ class ScaffoldTests(unittest.TestCase):
         status = scaffold_status()
 
         self.assertTrue(status["scaffold_ready"])
-        self.assertIn(status["next"], {"P0.2", "P0.3", "P0.4"})
+        self.assertIn(status["next"], {"P0.2", "P0.3", "P0.4", "P0.5"})
         self.assertIsInstance(status["p0_2_complete"], bool)
         self.assertIsInstance(status["p0_3_complete"], bool)
+        self.assertIsInstance(status["p0_4_complete"], bool)
         self.assertEqual(status["missing_paths"], [])
 
     def test_source_processing_status_is_known(self) -> None:
@@ -22,8 +23,20 @@ class ScaffoldTests(unittest.TestCase):
         manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
 
         statuses = {source["processing_status"] for source in manifest["sources"]}
-        self.assertTrue(statuses <= {"not_started", "processed", "deferred"})
-        self.assertIn(manifest["status"], {"pending_p0_2", "p0_2_complete"})
+        self.assertTrue(
+            statuses
+            <= {
+                "not_started",
+                "processed",
+                "deferred",
+                "processed_as_candidate",
+                "deferred_after_probe",
+            }
+        )
+        self.assertIn(
+            manifest["status"],
+            {"pending_p0_2", "p0_2_complete", "p0_4_complete"},
+        )
 
     def test_generated_data_directories_exist(self) -> None:
         expected = (
