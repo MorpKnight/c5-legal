@@ -16,6 +16,18 @@
     "Masyarakat Hukum Adat",
     "Jaminan Fidusia"
   ],
+  "domain_focus_terms": [
+    "Dokumen Elektronik",
+    "Informasi Elektronik",
+    "Tanda Tangan Elektronik",
+    "Prosesor Data Pribadi",
+    "Korporasi",
+    "Pelaku Usaha Sektor Keuangan",
+    "Perjanjian Internasional",
+    "Kontrak Kerja Konstruksi",
+    "Kesejahteraan Pekerja/Buruh",
+    "Nasabah Debitur"
+  ],
   "quotas": {
     "anchor": 10,
     "multi_sense": 2,
@@ -25,26 +37,5 @@
     "numeric": 4,
     "long_definition": 5,
     "typical_fill": 5
-  },
-  "domain_keywords": [
-    "badan usaha",
-    "bank",
-    "data",
-    "debitur",
-    "direksi",
-    "dokumen perusahaan",
-    "jaminan",
-    "konsumen",
-    "kredit",
-    "modal",
-    "pajak",
-    "pekerja",
-    "pemberi kerja",
-    "pengendali",
-    "perjanjian",
-    "perusahaan",
-    "perseroan",
-    "saham",
-    "usaha"
-  ]
+  }
 }

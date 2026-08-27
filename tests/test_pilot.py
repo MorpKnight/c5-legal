@@ -68,6 +68,7 @@ class PilotSelectionTests(unittest.TestCase):
             "max_per_primary_source": 3,
             "near_neighbor_min_jaccard": 0.5,
             "anchors": ["Istilah Contoh 01", "Istilah Contoh 02"],
+            "domain_focus_terms": ["Istilah Contoh 03", "Istilah Contoh 04"],
             "quotas": {
                 "anchor": 2,
                 "multi_sense": 1,
@@ -77,8 +78,7 @@ class PilotSelectionTests(unittest.TestCase):
                 "numeric": 1,
                 "long_definition": 1,
                 "typical_fill": 2
-            },
-            "domain_keywords": ["data", "usaha"]
+            }
         }
 
         with tempfile.TemporaryDirectory() as temporary_directory:

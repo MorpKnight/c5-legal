@@ -85,6 +85,8 @@ def load_config(path: Path) -> dict[str, Any]:
         raise ValueError("Pilot quotas must add up to target_count")
     if config["quotas"].get("anchor") != len(config["anchors"]):
         raise ValueError("Anchor quota must match the number of anchors")
+    if config["quotas"].get("domain_focus") != len(config["domain_focus_terms"]):
+        raise ValueError("Domain-focus quota must match the number of configured terms")
     return config
 
 
@@ -107,24 +109,19 @@ def _percentile(values: list[int], fraction: float) -> int:
     return ordered[round((len(ordered) - 1) * fraction)]
 
 
-def aggregate_terms(frame: pl.DataFrame, domain_keywords: list[str]) -> list[dict[str, Any]]:
+def aggregate_terms(frame: pl.DataFrame, domain_focus_terms: list[str]) -> list[dict[str, Any]]:
     grouped: dict[str, list[dict[str, Any]]] = defaultdict(list)
     for row in frame.sort(["canonical_term", "regulation_label", "sense_id"]).iter_rows(named=True):
         grouped[row["term_id"]].append(row)
 
     candidates: list[dict[str, Any]] = []
-    normalized_keywords = [normalize_key(keyword) for keyword in domain_keywords]
+    normalized_domain_terms = {normalize_key(term) for term in domain_focus_terms}
     for term_id, rows in grouped.items():
         representative = rows[0]
         definitions = [row["source_definition"] for row in rows]
         source_labels = sorted({row["regulation_label"] for row in rows})
         regulation_types = sorted({row["regulation_type"] for row in rows})
         regulation_titles = sorted({row["regulation_title"] for row in rows})
-        searchable = normalize_key(
-            " ".join(
-                [representative["canonical_term"], *source_labels, *regulation_titles]
-            )
-        )
         warnings = sorted(
             {row["normalization_warning"] for row in rows if row["normalization_warning"]}
         )
@@ -146,7 +143,7 @@ def aggregate_terms(frame: pl.DataFrame, domain_keywords: list[str]) -> list[dic
                 "maximum_definition_length": max(map(len, definitions)),
                 "has_alias": any(ALIAS_RE.search(definition) for definition in definitions),
                 "has_digits": any(DIGIT_RE.search(definition) for definition in definitions),
-                "domain_focus": any(keyword in searchable for keyword in normalized_keywords),
+                "domain_focus": representative["normalized_term"] in normalized_domain_terms,
                 "normalization_warnings": warnings,
                 "tokens": term_tokens(representative["canonical_term"]),
             }
@@ -272,7 +269,7 @@ def select_pilot(
     config = load_config(config_path)
     input_frame = pl.read_parquet(input_path)
     quarantine_frame = pl.read_parquet(quarantine_path)
-    all_candidates = aggregate_terms(input_frame, config["domain_keywords"])
+    all_candidates = aggregate_terms(input_frame, config["domain_focus_terms"])
     eligible = [candidate for candidate in all_candidates if not candidate["normalization_warnings"]]
     warning_candidates = [candidate for candidate in all_candidates if candidate["normalization_warnings"]]
     candidate_by_term = {candidate["normalized_term"]: candidate for candidate in eligible}
@@ -323,12 +320,22 @@ def select_pilot(
         "typical_fill": lambda candidate: True,
     }
 
-    for bucket in ("multi_sense", "domain_focus"):
-        needed = config["quotas"][bucket]
-        for candidate in ranked(bucket, filter(bucket_filters[bucket], eligible)):
-            if sum(row["selection_bucket"] == bucket for row in selected.values()) >= needed:
-                break
-            add(candidate, bucket)
+    needed = config["quotas"]["multi_sense"]
+    for candidate in ranked("multi_sense", filter(bucket_filters["multi_sense"], eligible)):
+        if sum(row["selection_bucket"] == "multi_sense" for row in selected.values()) >= needed:
+            break
+        add(candidate, "multi_sense")
+
+    for configured_term in config["domain_focus_terms"]:
+        candidate = candidate_by_term.get(normalize_key(configured_term))
+        if candidate is None:
+            raise ValueError(
+                f"Configured domain-focus term is unavailable or excluded: {configured_term}"
+            )
+        if not add(candidate, "domain_focus"):
+            raise ValueError(
+                f"Configured domain-focus term conflicts with selection constraints: {configured_term}"
+            )
 
     near_needed = config["quotas"]["near_neighbor"]
     pairs = near_neighbor_pairs(
@@ -339,13 +346,19 @@ def select_pilot(
     for _, left, right in pairs:
         if sum(row["selection_bucket"] == "near_neighbor" for row in selected.values()) >= near_needed:
             break
-        if left["term_id"] in selected or add(left, "near_neighbor"):
+        if left["term_id"] in selected or right["term_id"] in selected:
+            continue
+        left_source = left["primary_regulation_label"]
+        right_source = right["primary_regulation_label"]
+        additions_by_source = Counter((left_source, right_source))
+        if any(
+            source_counts[source] + additions > config["max_per_primary_source"]
+            for source, additions in additions_by_source.items()
+        ):
+            continue
+        if add(left, "near_neighbor") and add(right, "near_neighbor"):
             related_terms[left["term_id"]].add(right["canonical_term"])
             related_terms[right["term_id"]].add(left["canonical_term"])
-        if sum(row["selection_bucket"] == "near_neighbor" for row in selected.values()) < near_needed:
-            if right["term_id"] in selected or add(right, "near_neighbor"):
-                related_terms[left["term_id"]].add(right["canonical_term"])
-                related_terms[right["term_id"]].add(left["canonical_term"])
 
     for bucket in ("alias", "numeric", "long_definition", "typical_fill"):
         needed = config["quotas"][bucket]

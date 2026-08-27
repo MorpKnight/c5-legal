@@ -85,10 +85,10 @@ Pilih pilot P0.3 setelah P0.2 selesai:
 uv run c5-model select-pilot
 ```
 
-Selector mengunci anchor yang disepakati, mengecualikan quarantine dan
-normalization warning, membatasi dominasi satu sumber, lalu mengisi slot dari
-multi-sense, domain focus, near-neighbor, alias, angka, definisi panjang, dan
-kasus tipikal. Seluruh hasil masih `pending_review`.
+Selector mengunci anchor dan istilah domain yang disepakati, mengecualikan
+quarantine dan normalization warning, membatasi dominasi satu sumber, lalu
+mengisi slot lain dari multi-sense, pasangan near-neighbor, alias, angka,
+definisi panjang, dan kasus tipikal. Seluruh hasil masih `pending_review`.
 
 ## Data handling
 
