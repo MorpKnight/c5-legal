@@ -9,7 +9,7 @@
 - P0.2 — audit dan normalisasi kamus: **selesai**
 - P0.3 — pemilihan pilot 50 istilah: **pipeline tersedia; lihat `c5-model status` untuk hasil run**
 - P0.4 — source enrichment kandidat: **pipeline tersedia; lihat `c5-model status` untuk hasil run**
-- P0.5 — source review dan gold-query scaffold: **pipeline tersedia; menunggu review manusia**
+- P0.5 — source review dan gold-query authoring: **50 sumber verified; 250 query authored; menunggu review gold set**
 
 Tidak ada model, embedding, atau dataset Hugging Face yang diproses pada P0.2.
 

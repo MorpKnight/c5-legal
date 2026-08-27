@@ -2,7 +2,7 @@
 
 ## Outcome
 
-Evidence teknis sudah dikumpulkan untuk 50 source row dari 39 sumber resmi. Berdasarkan konfirmasi manual pengguna dan pengecekan status portal/JDIH, seluruh 50 row telah berstatus 'verified'. Seluruh source row dapat menjadi dasar authoring gold query, dengan status hukum tetap perlu dipantau sebagai snapshot.
+Evidence teknis sudah dikumpulkan untuk 50 source row dari 39 sumber resmi. Berdasarkan konfirmasi manual pengguna dan pengecekan status portal/JDIH, seluruh 50 row telah berstatus 'verified'. Seluruh 250 gold-query slot sudah diisi dengan query hasil authoring teknis; approval gold set masih menunggu review manusia.
 
 ## Evidence boundary
 
@@ -21,13 +21,17 @@ Evidence teknis sudah dikumpulkan untuk 50 source row dari 39 sumber resmi. Berd
 
 ## Gold-query authoring
 
-- Slot total: 250 (250 siap diauthor, 0 masih blocked)
-- Semua query slot berstatus 'pending_human_review'; 'query_text' tetap kosong.
-- Author harus menulis parafrasa/deskripsi yang tidak menyebut target term dan tidak menyalin definisi sumber.
-- Query 'approved' tetap memerlukan author dan reviewer manusia.
+- Slot total: 250 (5 per istilah); query text terisi 250/250.
+- Author status: 'authored' = 250.
+- Review status: 'pending_human_review' = 250.
+- Target-term leakage check: passed.
+- Source-definition copy check: passed.
+- Locked test split: 20 istilah / 100 query.
+- Query 'approved' tetap memerlukan reviewer manusia yang mengisi 'reviewer_id' dan 'reviewed_at'.
 
 ## Next action
 
-1. Author 5 query per istilah untuk seluruh 50 istilah.
-2. Review setiap query dan isi 'query_type', author, reviewer, dan timestamp.
+1. Review query per istilah untuk relevansi, ketidakambiguannya, dan kecocokan dengan definisi resmi.
+2. Jika sesuai, isi 'reviewer_id', 'reviewed_at', dan ubah 'review_status' menjadi 'approved'.
 3. Jalankan 'c5-model validate-p05'.
+4. Setelah gold set disetujui, lanjutkan benchmark retrieval.

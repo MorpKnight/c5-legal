@@ -3,7 +3,7 @@
   "config_sha256": "0a722e0f67b031bc401d06baba4d5e46db177f3c7ffa26550a83dbcfa30143dc",
   "enriched_path": "data/curated/pilot_terms_enriched.parquet",
   "enriched_sha256": "12c61920e8ec0699710188298a15eba13a74ecf01519e23f3eeb83567b99169c",
-  "generated_at": "2026-08-27T07:26:18+00:00",
+  "generated_at": "2026-08-27T07:44:37+00:00",
   "gold_approved_count": 0,
   "gold_query_slot_count": 250,
   "gold_query_slots_per_term": 5,
@@ -39,8 +39,8 @@
   "output_hashes": {
     "data/evaluation/source_review_queue.csv": "0f28877c2ce59bb31ceda2af3cc804e7ae577ee2b6e0ff66ac96e11c2f2574b7",
     "data/evaluation/source_review_queue.parquet": "f52f693917cdc936c23beb5a06b4adf6b56d806b3786c9db9e4399d49a4b04c5",
-    "data/evaluation/gold_queries.csv": "df5322a138408e03f5426e797d0aadec56ae5f8b224150fd0c0573c7a76c31a7",
-    "data/evaluation/gold_queries.parquet": "1189802beeebbaa083d85f4c1e12fe0437184b163d04813027122a4e0ffdf719"
+    "data/evaluation/gold_queries.csv": "f4683841a59c0b981f1b4cb75c53e3706860b58c40084768c8e1fd455a0cfff7",
+    "data/evaluation/gold_queries.parquet": "986bdfb66bd3ef697c5b447cc00af4b0905bf1d308317f0b77595877b89c3c92"
   },
   "pilot_path": "data/curated/pilot_terms.parquet",
   "pilot_sha256": "a78b26903b9b4b499e7a950487d8622c3426693d7e5e8615d14b3db128eec2f1",
@@ -53,11 +53,15 @@
   "source_review_status_counts": {
     "verified": 50
   },
-  "status": "p0_5_ready_for_gold_query_authoring",
+  "status": "p0_5_gold_queries_authored_pending_review",
   "verified_source_count": 50,
   "pending_source_review_count": 0,
   "gold_authoring_ready_count": 250,
   "gold_blocked_source_count": 0,
   "evidence_collected_source_count": 50,
-  "user_confirmation_note": "User confirmed having read the source evidence; all 50 source rows were promoted only after required evidence fields and accepted source status were present."
+  "user_confirmation_note": "User confirmed having read the source evidence; all 50 source rows were promoted only after required evidence fields and accepted source status were present.",
+  "gold_query_text_count": 250,
+  "gold_query_leakage_check": "passed",
+  "gold_query_definition_copy_check": "passed",
+  "gold_query_author_id": "codex_gold_query_author_v1"
 }
