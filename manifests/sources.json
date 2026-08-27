@@ -1,36 +1,46 @@
 {
   "schema_version": 1,
-  "status": "pending_p0_2",
   "sources": [
     {
-      "source_id": "local_kamus_hukum",
       "kind": "local_seed_glossary",
-      "location": "data/raw/kamus_hukum.csv",
-      "revision": null,
-      "sha256": null,
-      "retrieved_at": null,
       "license": "needs_review",
-      "processing_status": "not_started"
+      "location": "data/raw/kamus_hukum.csv",
+      "outputs": {
+        "data/interim/duplicate_records.csv": "bd497fa743a5db73401fb9cd01a96e3ad4eb857e808bd21df2d1f79792fa528b",
+        "data/interim/legal_term_senses.csv": "d51833408f1ab98a6bcd86dc54b6d8ea478f1d144bbf50768bed84530e15044e",
+        "data/interim/legal_term_senses.parquet": "bacda8b890a6beb512fe93a571f5343a0817d9a92b29802b373083d8740d4282",
+        "data/interim/quarantined_records.csv": "a19cb04fd10255564ad924f27879472dbd1b4128c7f8e937ca5f925e1e4ae46b",
+        "data/interim/quarantined_records.parquet": "4aa98cadedab24e9652e21c2c48cd1e08c2a55debd94fb6fe483dd7243fa0593"
+      },
+      "processing_status": "processed",
+      "retrieved_at": "2026-08-27T03:37:57.417156+00:00",
+      "revision": "sha256:b5ef1135091837f0fa1ee115a6d03cb887a8dae0afd0614b4c1c5f7f680122d4",
+      "row_count": 3825,
+      "sha256": "b5ef1135091837f0fa1ee115a6d03cb887a8dae0afd0614b4c1c5f7f680122d4",
+      "size_bytes": 1520259,
+      "source_id": "local_kamus_hukum",
+      "verification_status": "secondary_source_needs_official_review"
     },
     {
-      "source_id": "hf_id_reg_md_rag",
       "kind": "huggingface_candidate_corpus",
+      "license": "CC-BY-4.0 claimed by dataset card; verify before use",
+      "processing_status": "not_started",
       "repository": "Azzindani/ID_REG_MD_RAG",
+      "retrieved_at": null,
       "revision": null,
       "sha256": null,
-      "retrieved_at": null,
-      "license": "CC-BY-4.0 claimed by dataset card; verify before use",
-      "processing_status": "not_started"
+      "source_id": "hf_id_reg_md_rag"
     },
     {
-      "source_id": "hf_id_reg_kg_2511",
       "kind": "huggingface_optional_enrichment",
+      "license": "CC-BY-4.0 claimed by dataset card; verify before use",
+      "processing_status": "deferred",
       "repository": "Azzindani/ID_REG_KG_2511",
+      "retrieved_at": null,
       "revision": null,
       "sha256": null,
-      "retrieved_at": null,
-      "license": "CC-BY-4.0 claimed by dataset card; verify before use",
-      "processing_status": "deferred"
+      "source_id": "hf_id_reg_kg_2511"
     }
-  ]
+  ],
+  "status": "p0_2_complete"
 }

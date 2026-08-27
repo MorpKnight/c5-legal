@@ -1,8 +1,23 @@
 {
+  "created_at": "2026-08-27T03:37:57.417156+00:00",
+  "datasets": [
+    {
+      "dataset_id": "local_kamus_hukum",
+      "input_path": "data/raw/kamus_hukum.csv",
+      "outputs": {
+        "data/interim/duplicate_records.csv": "bd497fa743a5db73401fb9cd01a96e3ad4eb857e808bd21df2d1f79792fa528b",
+        "data/interim/legal_term_senses.csv": "d51833408f1ab98a6bcd86dc54b6d8ea478f1d144bbf50768bed84530e15044e",
+        "data/interim/legal_term_senses.parquet": "bacda8b890a6beb512fe93a571f5343a0817d9a92b29802b373083d8740d4282",
+        "data/interim/quarantined_records.csv": "a19cb04fd10255564ad924f27879472dbd1b4128c7f8e937ca5f925e1e4ae46b",
+        "data/interim/quarantined_records.parquet": "4aa98cadedab24e9652e21c2c48cd1e08c2a55debd94fb6fe483dd7243fa0593"
+      },
+      "revision": "sha256:b5ef1135091837f0fa1ee115a6d03cb887a8dae0afd0614b4c1c5f7f680122d4",
+      "row_count": 3825,
+      "sha256": "b5ef1135091837f0fa1ee115a6d03cb887a8dae0afd0614b4c1c5f7f680122d4",
+      "size_bytes": 1520259
+    }
+  ],
+  "note": "Only the local seed glossary is locked. Hugging Face sources remain pending/deferred.",
   "schema_version": 1,
-  "status": "unlocked",
-  "created_at": "2026-08-27",
-  "datasets": [],
-  "note": "Dataset revisions and checksums will be populated before P0.2 processing begins."
+  "status": "seed_locked"
 }
-

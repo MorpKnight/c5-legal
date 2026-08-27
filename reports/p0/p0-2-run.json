@@ -1,0 +1,139 @@
+{
+  "curated_records": 3133,
+  "definition_length": {
+    "max": 793,
+    "median": 198,
+    "min": 24,
+    "p90": 331
+  },
+  "duplicate_term_groups": 604,
+  "exact_duplicate_rows_removed": 677,
+  "generated_at": "2026-08-27T03:37:57.417156+00:00",
+  "input_path": "data/raw/kamus_hukum.csv",
+  "input_sha256": "b5ef1135091837f0fa1ee115a6d03cb887a8dae0afd0614b4c1c5f7f680122d4",
+  "input_size_bytes": 1520259,
+  "missing_fields": {
+    "istilah": 0,
+    "pengertian": 0,
+    "status": 0,
+    "undang_undang": 0,
+    "url": 0,
+    "uu": 11
+  },
+  "multi_sense_term_groups": 2,
+  "multi_sense_terms": [
+    "Kode Etik Jurnalistik",
+    "Lembaga Penyedia Layanan Peningkatan Kualitas Keluarga"
+  ],
+  "normalization_warning_terms": [
+    "Anak Perusahaan BUMN",
+    "Cadangan Strategis Energi",
+    "Eksploitasi Minyak dan Gas Bumi",
+    "Eksplorasi Minyak dan Gas Bumi",
+    "Hapus Buku Piutang Pajak",
+    "Kantor Cabang Bank",
+    "Komponen Cadangan Pertahanan Negara",
+    "Komponen Pendukung Pertahanan Negara",
+    "Komponen Utama Pertahanan Negara",
+    "Lelang Noneksekusi Sukarela Terjadwal Khusus",
+    "Niaga Minyak dan Gas Bumi",
+    "Peleburan Perseroan Terbatas",
+    "Pengambilalihan Perseroan Terbatas"
+  ],
+  "output_hashes": {
+    "data/interim/duplicate_records.csv": "bd497fa743a5db73401fb9cd01a96e3ad4eb857e808bd21df2d1f79792fa528b",
+    "data/interim/legal_term_senses.csv": "d51833408f1ab98a6bcd86dc54b6d8ea478f1d144bbf50768bed84530e15044e",
+    "data/interim/legal_term_senses.parquet": "bacda8b890a6beb512fe93a571f5343a0817d9a92b29802b373083d8740d4282",
+    "data/interim/quarantined_records.csv": "a19cb04fd10255564ad924f27879472dbd1b4128c7f8e937ca5f925e1e4ae46b",
+    "data/interim/quarantined_records.parquet": "4aa98cadedab24e9652e21c2c48cd1e08c2a55debd94fb6fe483dd7243fa0593"
+  },
+  "quarantine_reason_counts": {
+    "source_unverified": 9,
+    "unparseable_regulation_identity": 6
+  },
+  "quarantine_terms": [
+    {
+      "reason": "source_unverified",
+      "term": "Eksistensi Keluarga"
+    },
+    {
+      "reason": "source_unverified",
+      "term": "Interaksi Keluarga"
+    },
+    {
+      "reason": "source_unverified",
+      "term": "Kelentingan Keluarga"
+    },
+    {
+      "reason": "source_unverified",
+      "term": "Keluarga Tangguh"
+    },
+    {
+      "reason": "source_unverified",
+      "term": "Kerentanan Keluarga"
+    },
+    {
+      "reason": "source_unverified",
+      "term": "Kesejahteraan Keluarga"
+    },
+    {
+      "reason": "source_unverified",
+      "term": "Ketahanan Keluarga"
+    },
+    {
+      "reason": "source_unverified",
+      "term": "Ketahanan Nasional"
+    },
+    {
+      "reason": "source_unverified",
+      "term": "Krisis Keluarga"
+    },
+    {
+      "reason": "unparseable_regulation_identity",
+      "term": "Grosse Akta"
+    },
+    {
+      "reason": "unparseable_regulation_identity",
+      "term": "Hortikultura"
+    },
+    {
+      "reason": "unparseable_regulation_identity",
+      "term": "Kependudukan"
+    },
+    {
+      "reason": "unparseable_regulation_identity",
+      "term": "Kurator"
+    },
+    {
+      "reason": "unparseable_regulation_identity",
+      "term": "Maklumat Pelayanan"
+    },
+    {
+      "reason": "unparseable_regulation_identity",
+      "term": "Pohon Perumahan"
+    }
+  ],
+  "quarantined_raw_records": 20,
+  "quarantined_records": 15,
+  "raw_input_unchanged": true,
+  "raw_records": 3825,
+  "records_in_duplicate_term_groups": 1283,
+  "report_sha256": "ded8639d5aa02f341203de0fba0b70a2fb3df3bc9ffc64d52dc3f811e64cac98",
+  "retrieval_prefix_removed_records": 3135,
+  "retrieval_prefix_retained_records": 13,
+  "runtime": {
+    "platform": "Linux-7.0.0-1008-gcp-x86_64-with-glibc2.43",
+    "polars": "1.44.1",
+    "python": "3.12.13"
+  },
+  "schema_version": 1,
+  "source_hosts": {
+    "paralegal.id": 3148
+  },
+  "status_counts": {
+    "OK": 3814,
+    "UU/JUDUL TIDAK DITEMUKAN": 11
+  },
+  "unique_records": 3148,
+  "unique_terms": 3146
+}
