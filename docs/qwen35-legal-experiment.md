@@ -25,6 +25,21 @@ The evaluation runner is read-only with respect to model and datasets. It
 writes only generated evaluation outputs and a blank manual-review queue under
 the configured run root.
 
+## RAG comparison
+
+The no-RAG versus official-source RAG benchmark is implemented in
+[`notebooks/qwen35_legal_rag_comparison.ipynb`](../notebooks/qwen35_legal_rag_comparison.ipynb)
+and [`notebooks/qwen35_legal_rag_comparison.py`](../notebooks/qwen35_legal_rag_comparison.py).
+Its results are recorded in
+[`reports/qwen35-legal/rag-comparison-findings.md`](../reports/qwen35-legal/rag-comparison-findings.md).
+
+In the six-case demonstration, RAG raised the mean in-scope screening score
+from 20.73 to 69.53, improved four of five in-scope answers, and abstained on
+the deliberately unavailable pasal. The exact citation marker is not a gate;
+source identity, article match, grounding, completeness, and currentness are
+more important. The fixture is intentionally small and is not a production
+authoritative corpus.
+
 ## Distribution
 
 The Git repository stores code, notebooks, configuration, manifests, and

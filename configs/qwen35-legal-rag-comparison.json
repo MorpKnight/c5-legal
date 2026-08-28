@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "experiment_id": "qwen35-indonesian-legal-rag-comparison",
+  "purpose": "Compare the same fine-tuned Qwen adapter with and without official-source context.",
+  "model": {
+    "base_model": "Qwen/Qwen3.5-4B-Base",
+    "adapter": "/home/tamaniga34/notebooks/qwen35_legal_runs/full/sft/final_adapter",
+    "condition_without_rag": "adapter_no_rag",
+    "condition_with_rag": "adapter_with_rag"
+  },
+  "retrieval": {
+    "fixture": "data/samples/official_source_rag_fixture.jsonl",
+    "test_cases": "data/samples/official_source_rag_test_cases.jsonl",
+    "method": "metadata-filtered lexical retrieval over a small official-source fixture",
+    "top_k": 3,
+    "strict_article_filter": true,
+    "citation_format": "[S1]"
+  },
+  "generation": {
+    "max_new_tokens": 256,
+    "max_input_tokens": 4096,
+    "enable_thinking": false,
+    "do_sample": false,
+    "num_beams": 1
+  },
+  "evaluation": {
+    "automatic_metrics_are_diagnostics": true,
+    "requires_human_legal_review": true,
+    "score_components": [
+      "anchor_recall",
+      "reference_token_f1",
+      "grounded_token_precision",
+      "retrieval_hit",
+      "citation_present",
+      "appropriate_abstention"
+    ]
+  },
+  "fixture_warning": "This is a minimal demonstration fixture, not the complete authoritative corpus. Verify every excerpt and amendment/currentness before production use."
+}
