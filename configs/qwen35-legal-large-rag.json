@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "experiment_id": "qwen35-indonesian-legal-large-candidate-rag",
+  "purpose": "Scale the paired no-RAG versus candidate-corpus RAG behavioral benchmark.",
+  "model": {
+    "base_model": "Qwen/Qwen3.5-4B-Base",
+    "adapter": "morpknight/qwen3.5-4b-indonesian-legal-lora",
+    "condition_without_rag": "adapter_no_rag",
+    "condition_with_rag": "adapter_with_candidate_rag"
+  },
+  "input": {
+    "qa_dataset": "morpknight/indonesian-legal-qa-sft",
+    "qa_split": "test",
+    "candidate_corpus": "morpknight/indonesian-legal-corpus",
+    "candidate_corpus_splits": ["train", "validation", "test"],
+    "identity_match": ["regulation_key", "article_base"],
+    "full_covered_limit": 100,
+    "full_missing_context_limit": 25,
+    "smoke_covered_limit": 8,
+    "smoke_missing_context_limit": 4,
+    "seed": 42
+  },
+  "retrieval": {
+    "method": "exact local regulation/article identity plus lexical chunk ordering",
+    "top_k": 4,
+    "context_max_chars": 14000,
+    "official_provenance": false
+  },
+  "generation": {
+    "max_new_tokens": 256,
+    "max_input_tokens": 4096,
+    "do_sample": false,
+    "num_beams": 1
+  },
+  "diagnostics": [
+    "reference_token_f1",
+    "reference_marker_recall",
+    "grounded_token_precision",
+    "appropriate_missing_context_abstention",
+    "paired_f1_delta",
+    "max_token_hit",
+    "repeated_6gram_ratio",
+    "latency"
+  ],
+  "gates": {
+    "generation_technical_check": "required",
+    "candidate_corpus_identity_audit": "required",
+    "official_provenance": "not_established",
+    "human_legal_review": "required",
+    "production_decision": "not_ready"
+  },
+  "warning": "Candidate corpus is used for behavioral testing only; verify official provenance, currentness, amendments, and document identity before production use."
+}

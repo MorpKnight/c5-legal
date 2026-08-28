@@ -54,6 +54,13 @@ konfigurasi, manifest, serta hasil evaluasinya tersedia di:
 - [`notebooks/qwen35_indonesian_legal_finetune.ipynb`](notebooks/qwen35_indonesian_legal_finetune.ipynb)
 - [`notebooks/qwen35_legal_evaluation.ipynb`](notebooks/qwen35_legal_evaluation.ipynb)
 - [`reports/qwen35-legal/evaluation-summary.md`](reports/qwen35-legal/evaluation-summary.md)
+- [`reports/qwen35-legal/large-candidate-rag/findings.md`](reports/qwen35-legal/large-candidate-rag/findings.md)
+
+Benchmark RAG diperluas menggunakan 125 kasus dari QA test split. Hasilnya
+mendukung model bersama RAG pada kasus yang memiliki sumber, tetapi candidate
+corpus belum dianggap resmi dan masih memiliki collision pada identitas
+regulasi. Runner serta output yang dapat diaudit tersedia di folder laporan
+benchmark tersebut.
 
 Weights adapter tidak disimpan di Git; model publik didistribusikan melalui
 [`morpknight/qwen3.5-4b-indonesian-legal-lora`](https://huggingface.co/morpknight/qwen3.5-4b-indonesian-legal-lora).

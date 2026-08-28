@@ -1,0 +1,20 @@
+{
+  "qa_split": "test",
+  "qa_total_rows_scanned": 638610,
+  "qa_parseable_regulation_key_rows": 479366,
+  "qa_parseable_article_rows": 638606,
+  "unique_pair_counts": {
+    "covered": 2535,
+    "missing": 6515
+  },
+  "selected_counts": {
+    "covered": 100,
+    "missing": 25
+  },
+  "candidate_corpus_pair_count": 199730,
+  "candidate_corpus_scan": {
+    "corpus_rows_scanned": 641985,
+    "corpus_unique_regulation_article_pairs": 199730
+  },
+  "candidate_pair_coverage_over_unique_qa_pairs": 0.28011
+}

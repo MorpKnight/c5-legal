@@ -1,0 +1,82 @@
+{
+  "target_pairs": 100,
+  "corpus_rows_scanned": 641985,
+  "corpus_rows_kept_for_selected_pairs": 121,
+  "indexed_pairs": 100,
+  "indexed_chunks": 121,
+  "pairs_with_multiple_titles": 7,
+  "title_collision_examples": [
+    {
+      "regulation_key": "peraturan gubernur|24|2016",
+      "article_base": "1",
+      "titles": [
+        "BAGI HASIL PENERIMAAN PAJAK AIR PERMUKAAN UNTUK PEMERINTAH PROVINSI DAN PEMERINTAH KABUPATEN/KOTA PERIODE BULAN JANUARI SAMPAI DENGAN MARET 2016",
+        "CADANGAN PANGAN PEMERINTAH DAERAH",
+        "PEDOMAN PELAKSANAAN BANTUAN KEUANGAN KEPADA PEMERINTAH KABUPATEN/KOTA UNTUK PEMBANGUNAN DESA/LINGKUNGAN TERPADU PADA KANTONG KEMISKINAN DI PROVINSI BANTEN TAHUN 2016",
+        "PEDOMAN UMUM PENGELOLAAN DANA BERGULIR PROVINSI JAWA TIMUR",
+        "PEMBERDAYAAN USAHA MIKRO, KECIL MELALUI PENCIPTAAN WIRAUSAHA BARU BAGI KEPALA KELUARGA MISKIN PROVINSI GORONTALO TAHUN ANGGARAN 2016",
+        "PENJABARAN PERTANGGUNGJAWABAN PELAKSANAAN ANGGARANPENDAPATAN DAN BELANJA DAERAH TAHUN ANGGARAN 2015",
+        "PERUBAHAN ATAS PERATURAN GUBERNUR NOMOR 142 TAHUN 2015 TENTANG BANTUAN SOSIAL BAGI KORBAN BENCANA"
+      ],
+      "chunk_count": 7
+    },
+    {
+      "regulation_key": "peraturan gubernur|24|2016",
+      "article_base": "5",
+      "titles": [
+        "CADANGAN PANGAN PEMERINTAH DAERAH",
+        "PEDOMAN PELAKSANAAN BANTUAN KEUANGAN KEPADA PEMERINTAH KABUPATEN/KOTA UNTUK PEMBANGUNAN DESA/LINGKUNGAN TERPADU PADA KANTONG KEMISKINAN DI PROVINSI BANTEN TAHUN 2016",
+        "PEDOMAN UMUM PENGELOLAAN DANA BERGULIR PROVINSI JAWA TIMUR",
+        "PEMBERDAYAAN USAHA MIKRO, KECIL MELALUI PENCIPTAAN WIRAUSAHA BARU BAGI KEPALA KELUARGA MISKIN PROVINSI GORONTALO TAHUN ANGGARAN 2016",
+        "PERUBAHAN ATAS PERATURAN GUBERNUR NOMOR 142 TAHUN 2015 TENTANG BANTUAN SOSIAL BAGI KORBAN BENCANA"
+      ],
+      "chunk_count": 5
+    },
+    {
+      "regulation_key": "peraturan pemerintah|29|2005",
+      "article_base": "4",
+      "titles": [
+        "BANTUAN KEUANGAN KEPADA PARTAI POLITIK",
+        "Pembentukan Daerah-Daerah Tingkat II di Sulawesi (Lembaran Negara Republik Indonesia Tahun 1959 No. 74 Tambahan Lembaga Negara No. 1822). 2. Undang - undang Nomor 23 Tahun 1992 tentang Kesehatan (Lembaran Negara Republik Indonesia Tahun 1992 Nomor 100, Tambahan Lembaran Negara Nomor 3495). 3. Undang - undang Nomor 23 Tahun 1997 tentang Pengelolaan Lingkungan Hidup (Lembaran Negara Republik Indonesia Tahun 1997 Nomor 68, Tambahan Lembaran Negara Nomor 3699); 4. Undang - undang Nomor 34 Tahun 2000 tentang Perubahan atas Undang - undang Nomor 18 tahun 1997 tentang Pajak Daerah dan Retribusi Daerah (Lembaran Negara Republik Indonesia Tahun 2000 Nomor 246, Tambahan Lembaran Negara Nomor 4048); 5. Undang - undang Nomor 32 Tahun 2004, tentang Pemerintahan Daerah (Lembaran Negara Republik Indonesia Tahun 2004 Nomor 125 Tambahan Lembaran Negara RI. Nomor 4437 ); 6. Undang - Undang Nomor 33 Tahun 2004, tentang Perimbangan Keuangan antara Pemerintah Pusat dan Pemerintahan Daerah (Lembaran Negara Republik Indonesia Tahun 2004 Nomor 126 Tambahan Lembaran Negara RI. Nomor 4438 ); 7. Peraturan Pemerintah Nomor 35 Tahun 1991 tentang Sungai; 8. Peraturan Pemerintah Nomor 27 Tahun 1999 tentang Analisa mengenai dampak Lingkungan (Lembaran Negara Republik Indonesia Tahun 1999 Nomor 59, Tambahan Lembaran Negara Nomor 3838); 9. Peraturan Pemerintah Nomor 25 Tahun 2000, tentang Kewenangan Pemerintah dan Kewenangan Propinsi sebagai Daerah Otonom (Lembaran Negara Republik Indonesia Tahun 2000 Nomor 54, Tambahan Lembaran Negara Nomor 3952 ); 10. Peraturan Daerah Kabupaten Kolaka Nomor 4 Tahun 2000 tentang Kewenangan Daerah Kabupaten Kolaka; 11. Peraturan Daerah Kabupaten Kolaka Nomor 1 Tahun 2004 tentang Pembentukan Organisasi Perangkat Daerah dan Sekretariat DPRD Kabupaten Kolaka; Dengan Persetujuan Bersama DEWAN PER"
+      ],
+      "chunk_count": 2
+    },
+    {
+      "regulation_key": "peraturan presiden|24|2014",
+      "article_base": "4",
+      "titles": [
+        "PENDIRIAN UNIVERSITAS SILIWANGI",
+        "PENGESAHAN PERSETUJUAN ANTARA PEMERINTAH REPUBLIK INDONESIA DAN PEMERINTAH REPUBLIK KOSTA RIKA MENGENAI PEMBEBASAN VISA BAGI PEMEGANG PASPOR DIPLOMATIK ATAU DINAS (AGREEMENT BETWEEN THE GOVERNMENT OF THE REPUBLIC OFINDONESIA AND THE GOVERNMENT OFTHE REPUBLIC OF COSTA RICA ON VISA EXEMPTIONFOR HOLDERS OFDIPLOMATIC OR SERVICE PASSPORTS)",
+        "PENGESAHAN PERSETUJUAN ANTARA PEMERINTAH REPUBLIK INDONESIA DAN PEMERINTAHMEKSIKO SERIKATMENGENAI PEMBEBASANVISABAGI PEMEGANG PASPOR DIPLOMATIK ATAU PASPOR D1NAS (AGREEMENT BETWEEN THE GOVERNMENT OFTHE REPUBLIC OFINDONESIA AND THE GOVERNMENT OF THE UNITEDMEXICAN STATES ON VISA EXEMPTION FOR HOLDERS OF DlPWMATlC OR OFFICIAL/SERVICE PASSPORTS) DENGAN RAHMATTUHANYANGMAHA ESA PRESIDEN REPUBLIKINDONESIA, hasil perundingan antara Delegasi-delegasi Pemerintah Republik Indonesia dan Pemerintah Meksiko Serikat; bahwa di Meksiko City, Meksiko pada tanggal 14 April 2014 Pemerintah Republik Indonesia telah menandatangani Persetujuan antara Pemerintah Republik Indonesia dan Pemerintah Meksiko Serikat mengenai PembebasanVisa bagi Pemegang Paspor Diplomatik atau Paspor Dinas (Agreement between the Government of the Republic of Indonesia and the Govemment of the United Mexican States on VlSa Exemption for Holders of Diplomatic or Official/Service Passports), sebagai - b. bahwa berdasarkan pertimbangan sebagaimana dimaksud pada huruf a, perlu mengesahkan Persetujuan tersebut dengan Peraturan Presiden;"
+      ],
+      "chunk_count": 3
+    },
+    {
+      "regulation_key": "undang-undang|20|2003",
+      "article_base": "25",
+      "titles": [
+        "SISTEM PENDIDIKAN NASIONAL",
+        "izin usaha Kelautan dan Perikanan sefia p€myetaan restribusi atamya b. - l. Undang-undang Nomor 29 tahun 1959 tentang Pembntukan Oaerahdaerah Tingtat II Di Sr.rlawesi (l€mbaran Negara Republik lndonesia Tahun 1959 Nomor 74, Tambahan Lembaran Negara Republik Indonesia Nomor 1822); 2. Undang-undang Nomor 8 Tahun l98l tentang Kitab Undang-Undang Hukum Acara Pidana (rmbaran Negara Repubtik lndonesia Nomor 3037; 3. Undang-Undang Nomor 5 tahun 1985 tentang Zona Ekonomi Ekseklusif lndonesia (Lembaran Negam Republik lndonesia tahrm 1983 Nomor 44' Tambahan Lembaran Negara Republik lndonesia Nomor 3260); 4. Undang-Undang Nomor 17 tatilnt 1985 tentang Ratifikasi Konvensi Perserikatan Bangsa-bangsa tentang Hukum Laut (lembaran Negala Republik Indonesia tahun 1985 Nomor 76' Tambahan Lembaran Negara Republik lndonesia Nomor 3319); 5. Undang-Undang Nomor 2l tahun RePublik Indonesia tahun 1992 Republik lndonesia Nomor 3493); 1992 tentang Pelayaran (Lernbaran Negara Nomor 98, Tambahan Lemberan Negara 6. Undang-undang Nomor 6 tahun 1996 tentang Perairan Indonesia Negara Republik Indonesia ahrm 1996 Nomor 73' Tambahan Negara Republik Indonesia Nomor 3674); (Lernbaran l,embaran 7. Undang-undang Nomor 18 tahun 1997 tentang Pajak Daerah dan Retrebusi Daeralr, Sebagaiman telah diubah menjadi Undang-undang Nomor 34 tahun 200 (l,embaran Negara Republik lndonesia tahun 2000 Nomor 246); 8. Undang-undang Nomor 32 Tahun 2ffi3 tentang Pemerintah Daerah (Lembaran Negara Republik Indonesia Tahun 199 Nomor 60, Tambahan Lembaran Negara Republik Indonesia Nomor 3839); 9. Undang-undang Nomor 3l tahun 2004 tentang Psikanan (lrrnbaran Negara Republik Indonesia Tahun 2004 Nomor 118); 10. Peraturan Pemerintah Nomor 27 Tahun 1983 tentang Pelaksanaan Undangundang Nomor 8 Tahun l98l tentang Hukum Acara Pidana (Lembaran Negara Republik Indonesia Tahun 1981 Nomor 6, Tambahan Lembaran Negara Republik Indonesia Nomor 3258); 11. Peraturan Pemerintah Nomor 15 tahun 1984 Pengelolaan Sumberdaya Alam Hayati di Zona Ekonomi Ekslusif lndonesia (ZEEI) (Lembaran Negara Republik lndonesia Nomor 3274); - I 2. Peraturan Pemerintah Nomor I 5 tahun I 990 t€ntang Usaha Perikanan sebagaiman telah diubah dengan Peraturan Pernerintah Nomor ,|6 Talrun 1993 (Lembaran Negara Republik Indonesia Nomor 3536); 13. Peraturan Pemerintah Nomor 25 Tahun 2000 tentang Kewenangan Pemerintah dan Kewenangan Propinsi sebagai Daerah Otonom (kmbaran Negara Republik Indonesia Tahun 2000 Nomor 54); 14. Peraturan Pemerintah Nomor 66 tahun 2001 tentang Retrebusi Daerah (L€mbaran Negara Republik Indonesia Tahun 2001 Nomor 5' Tmrbehan trmbaran Negara Republik lndonesia Nomor 3692); 15. Keputusan Presiden Nomor 44 tahun 199 tentang Teknis Penyusunan Peraturan Perundang-undang dan Bentuk Rancangan undang-undang, narrcangpn Peraturan Pemerintatr dan Rancangan Keputusan Presiden Q,embaran Negara Republik Indonesia tahun 1999 Nomor 70); - 16, Keputusan Menteri Dalam Negeri Nomor 23 tahrm 1986 tentang Ketentuan Umum Mengenai Penyidik Pegawai Negeri Sipil di Lingkuagan Kerja Pemerintah Daerah Kcputusan Menteri Dalarn Negeri Nomor 4 Tahun 1997 tentang Penyidik Pegawai Negeri Sipil di Lingkungan Pemerintah Daerah; - l?. Keputusan Menteri Dalam Negeri Nomor 174 tahun 1997 tentang Pedoman Tata Cara Pemungutan Retrebusi Daerah; 18. Keputusan Menteri Dalam Negeri Nomor 175 tahun 1998 tentang Pedoman tata Cara Pemeriksaan Dibidang Retribusi Daeralu 19. Keputusan Menteri Dalam Negeri Nomor ll9 tahun 1998 tertang Ruang Lingkup danjenis-jenis Retribusi Daerah Tingkat I dan Daerah Tingkat II; 20. Peraturan Menteri Kelautan dan Perikanan Nomor l7 Tahun 2006 tentang usaha perikanan; 21. Peraturan Daerah Kabupaten Bolaang Mongondow Utara Nornor tahun 2008 Gntang Pembenhrkan Organisasi dan Tata Kerja Dinas-Dinas Daerah Kabupaten Bolaang Mongondow Utara DEI{GAN PE.RSETIIJUAN DEIITAN PERWAKII,AN RAKYAT DAF,RAH KABTJPATEI..{ BOI,AANG MONGONDOW IJTARA ME.T,IUTUSKAN"
+      ],
+      "chunk_count": 2
+    },
+    {
+      "regulation_key": "undang-undang|43|1999",
+      "article_base": "1",
+      "titles": [
+        "PERUBAHAN ATAS UNDANG-UNDANG NOMOR 8 TAHUN 1974 TENTANG POKOK-POKOK KEPEGAWAIAN",
+        "TUGAS POKOK, FLINGS! DAN TATA KERJA DIVAS PENDAPATAN.PENGELOLAAN KEUANGAN DAN AfsceFT DAERAN KOTA BANJARBARU DENGAN RAMAT TUStAN YANG MAHA ESA WALIKOTA BANJARBARU, - a bahwa data , ' rangka menuniang luelancaran pasksanaan togas Dines Pendapatan, Peogelowan Keuangan den Asset Daerah Kota Baniarbaru sehevaga depot tordaya guna den nankin.' gura secara maksonsi. dipandarg pertu adanya tugs, pokoK lungs dan oda kola, - b banwa bardasarkan perlimbangan hunt a sebegatmana dimakso0 orates podu chtetapkan dengan Peraturan Wrilikote - I Undang-Undang Nomor 9 Tabun 1999 temang Rembereukan Kotamadya Deena , Tingkat II Etaniarbane (lembevan Negara Republik IndonesiaTatun z2 1999 Nomor 43.Tambahan Lambaran Republik. Indonesia Nogara Nock&amp; mc - ). 2 Undang-Undang Nomor 43 Tahun 1999 lontang Perutanan sifts Undang Undang Nomor 8 1974 tentang Pokok Pokok Kopogawaan (Lembaran Negara Rapuba, indonasa Nomor 53 Tambahan Lambe:an Republik Indonesia Negara Nomor 4389). - 3 Uhdang-Undang Nomor ID Thew 204 tantang Pembectutelin Peratumn Pena'dang-undargan (Lembaran Negate Republik Indonesia Tanen 2004 Nomor 53. Tambahan Lembaran Negate Republik Indonesia Nomor 4389) . - 4 Undang uncang Nomor 32 Tahun 2004 tentang Pernerintshan Daaran (lembaran Negara Republik Indonesia Tahun 2004 Nomor 125. Iamb/Klan Lembaran Pescara Republik Indonesia Norm' 4437) sebegaimana !elan Olutiah tirtheraPa kaii !flitter dengan Undang Undang Nonce 12 Tatum 2008 tenting Porubahan Kedua alas Unaang Unclaing Nome 32 Tabun 2004 tentang Pernerintahen Daerah (Lemberan Negara Republik Indonesia Tahun 2008 Manor 59. Iamb/Man Lembaran Negara Republik indonesta Manor 4844/ - 5 Paratully% Pemerintah Nomor 38 Tenon 2007 tentang Pemba/pan Urusan Pernenmanan Antara Pemenntan Pemenntan Daman Prows, den Pernenntah Daman Kabupaterk(Kiata (Lembaran Negara Republik Indonesia Tahun 2007 Nomor 82 Tambahan Lemberan Nogara Republik Indonesia Nomor 4737), - ti Perabsan Pemenniah Honor 41 Tahun 2007 tentang Organesesi Porangkat Doeran (Lembaran Negara Republik Indonesia Tabun 2007 Nomor 89, Tambahan Lembaran Negara Republik Indonesia Nomor 47411 - 7 Peraboan Menton Delam Negen Nomor 57 Trinun2008 tentang Petunjuk Teknts Penettaan Ofgarna64 Perangkat Daman - 8 Peeeesw Dann Kota Bankarbaru Ncenor 2 Tabun 2038 Ironing Uneven Pemenntahan pry; menjadi Kekvenangen Penxnntan Kota Banyarberu(Lemberen Dent, Kota Etan)arbaru Teem 2003 Nana 02 San D Nomor 1) . - 9 Peraiuran Dann Kola Bantarbaru Nome 11 Tenon 2008 tentang PembeNukan &amp;garages; den Tata Kona Dinas Daerah m Lingkurgan Pemenntah Kota Bankarbaru (Leenbaran Da n' Kota Etankarbaru lotion 2008 Nomor 11 Son D NOITOf 5) Menelapkan PAEMUTUSKAN PERATURAN WALIKOTA BANJARBARU TENTANG TOGAS POKOK FUNGSI DAN TATA KERJA DIMAS PENDAPATAN PENGELOLAAN KEUANGAN DAN ASSET DAERAH KOTA BANJARBARU"
+      ],
+      "chunk_count": 2
+    },
+    {
+      "regulation_key": "undang-undang|43|1999",
+      "article_base": "12",
+      "titles": [
+        "PERUBAHAN ATAS UNDANG-UNDANG NOMOR 8 TAHUN 1974 TENTANG POKOK-POKOK KEPEGAWAIAN",
+        "TUGAS POKOK, FLINGS! DAN TATA KERJA DIVAS PENDAPATAN.PENGELOLAAN KEUANGAN DAN AfsceFT DAERAN KOTA BANJARBARU DENGAN RAMAT TUStAN YANG MAHA ESA WALIKOTA BANJARBARU, - a bahwa data , ' rangka menuniang luelancaran pasksanaan togas Dines Pendapatan, Peogelowan Keuangan den Asset Daerah Kota Baniarbaru sehevaga depot tordaya guna den nankin.' gura secara maksonsi. dipandarg pertu adanya tugs, pokoK lungs dan oda kola, - b banwa bardasarkan perlimbangan hunt a sebegatmana dimakso0 orates podu chtetapkan dengan Peraturan Wrilikote - I Undang-Undang Nomor 9 Tabun 1999 temang Rembereukan Kotamadya Deena , Tingkat II Etaniarbane (lembevan Negara Republik IndonesiaTatun z2 1999 Nomor 43.Tambahan Lambaran Republik. Indonesia Nogara Nock&amp; mc - ). 2 Undang-Undang Nomor 43 Tahun 1999 lontang Perutanan sifts Undang Undang Nomor 8 1974 tentang Pokok Pokok Kopogawaan (Lembaran Negara Rapuba, indonasa Nomor 53 Tambahan Lambe:an Republik Indonesia Negara Nomor 4389). - 3 Uhdang-Undang Nomor ID Thew 204 tantang Pembectutelin Peratumn Pena'dang-undargan (Lembaran Negate Republik Indonesia Tanen 2004 Nomor 53. Tambahan Lembaran Negate Republik Indonesia Nomor 4389) . - 4 Undang uncang Nomor 32 Tahun 2004 tentang Pernerintshan Daaran (lembaran Negara Republik Indonesia Tahun 2004 Nomor 125. Iamb/Klan Lembaran Pescara Republik Indonesia Norm' 4437) sebegaimana !elan Olutiah tirtheraPa kaii !flitter dengan Undang Undang Nonce 12 Tatum 2008 tenting Porubahan Kedua alas Unaang Unclaing Nome 32 Tabun 2004 tentang Pernerintahen Daerah (Lemberan Negara Republik Indonesia Tahun 2008 Manor 59. Iamb/Man Lembaran Negara Republik indonesta Manor 4844/ - 5 Paratully% Pemerintah Nomor 38 Tenon 2007 tentang Pemba/pan Urusan Pernenmanan Antara Pemenntan Pemenntan Daman Prows, den Pernenntah Daman Kabupaterk(Kiata (Lembaran Negara Republik Indonesia Tahun 2007 Nomor 82 Tambahan Lemberan Nogara Republik Indonesia Nomor 4737), - ti Perabsan Pemenniah Honor 41 Tahun 2007 tentang Organesesi Porangkat Doeran (Lembaran Negara Republik Indonesia Tabun 2007 Nomor 89, Tambahan Lembaran Negara Republik Indonesia Nomor 47411 - 7 Peraboan Menton Delam Negen Nomor 57 Trinun2008 tentang Petunjuk Teknts Penettaan Ofgarna64 Perangkat Daman - 8 Peeeesw Dann Kota Bankarbaru Ncenor 2 Tabun 2038 Ironing Uneven Pemenntahan pry; menjadi Kekvenangen Penxnntan Kota Banyarberu(Lemberen Dent, Kota Etan)arbaru Teem 2003 Nana 02 San D Nomor 1) . - 9 Peraiuran Dann Kola Bantarbaru Nome 11 Tenon 2008 tentang PembeNukan &amp;garages; den Tata Kona Dinas Daerah m Lingkurgan Pemenntah Kota Bankarbaru (Leenbaran Da n' Kota Etankarbaru lotion 2008 Nomor 11 Son D NOITOf 5) Menelapkan PAEMUTUSKAN PERATURAN WALIKOTA BANJARBARU TENTANG TOGAS POKOK FUNGSI DAN TATA KERJA DIMAS PENDAPATAN PENGELOLAAN KEUANGAN DAN ASSET DAERAH KOTA BANJARBARU"
+      ],
+      "chunk_count": 3
+    }
+  ]
+}

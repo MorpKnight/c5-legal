@@ -40,6 +40,23 @@ source identity, article match, grounding, completeness, and currentness are
 more important. The fixture is intentionally small and is not a production
 authoritative corpus.
 
+### Benchmark diperluas
+
+Untuk melihat perilaku pada skala yang lebih besar, runner
+[`notebooks/qwen35_legal_large_candidate_rag.py`](../notebooks/qwen35_legal_large_candidate_rag.py)
+menguji 100 kasus dengan pasangan regulasi/pasal yang ditemukan dan 25 kasus
+tanpa pasangan pada candidate corpus. Laporan lengkap, manifest, output, dan
+queue review tersedia di
+[`reports/qwen35-legal/large-candidate-rag/findings.md`](../reports/qwen35-legal/large-candidate-rag/findings.md).
+
+Pada 100 kasus covered, Candidate RAG meningkatkan mean token-F1 dari `0,378`
+menjadi `0,539` dan menang pada `65/100` pasangan. Pada 25 kasus tanpa context,
+model melakukan abstention pada `19/25` kasus, sedangkan no-RAG tidak melakukan
+abstention. Candidate corpus memiliki coverage hanya `28,011%` terhadap
+pasangan unik QA dan ditemukan tujuh pasangan dengan beberapa judul berbeda di
+bawah key yang sama; hasil ini karena itu adalah evidence perilaku, bukan
+validasi legal atau official-source retrieval.
+
 ## Distribution
 
 The Git repository stores code, notebooks, configuration, manifests, and
