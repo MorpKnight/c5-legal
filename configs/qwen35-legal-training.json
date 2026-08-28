@@ -1,0 +1,103 @@
+{
+  "schema_version": 1,
+  "experiment_id": "qwen35-indonesian-legal",
+  "status": "completed_full_run",
+  "base_model": {
+    "repo_id": "Qwen/Qwen3.5-4B-Base",
+    "revision": "1001bb4d826a52d1f399e183466143f4da7b741b"
+  },
+  "datasets": {
+    "corpus": {
+      "repo_id": "morpknight/indonesian-legal-corpus",
+      "revision": "814f32015b10bf376907aa26ce1c12fe8bef700b",
+      "splits": {
+        "train": 587070,
+        "validation": 30983,
+        "test": 23932
+      }
+    },
+    "qa_sft": {
+      "repo_id": "morpknight/indonesian-legal-qa-sft",
+      "revision": "0d25efe8bf09dad69c3544d9bf62036967508bda",
+      "splits": {
+        "train": 10576428,
+        "validation": 626393,
+        "test": 638610
+      }
+    }
+  },
+  "mapping": {
+    "dapt": {
+      "input_columns": ["text"],
+      "objective": "causal_lm_all_tokens"
+    },
+    "sft": {
+      "input_columns": ["prompt", "completion"],
+      "rendered_format": "messages[user, assistant]",
+      "objective": "assistant_only_loss"
+    }
+  },
+  "sampling": {
+    "corpus_train_examples_used": 80000,
+    "qa_train_examples_used": 80000,
+    "selection_note": "The complete snapshots were validated and loaded; the full run intentionally trained on bounded reproducible subsets."
+  },
+  "hyperparameters": {
+    "max_steps_per_stage": 10000,
+    "max_length": 2048,
+    "per_device_train_batch_size": 1,
+    "per_device_eval_batch_size": 1,
+    "gradient_accumulation_steps": 8,
+    "effective_batch_size": 8,
+    "dapt_learning_rate": 0.0001,
+    "sft_learning_rate": 0.0002,
+    "lr_scheduler_type": "cosine",
+    "warmup_ratio": 0.03,
+    "weight_decay": 0.01,
+    "max_grad_norm": 1.0,
+    "optimizer": "adamw_torch_fused",
+    "lora_r": 16,
+    "lora_alpha": 32,
+    "lora_dropout": 0.05,
+    "lora_bias": "none",
+    "lora_target_modules": [
+      "q_proj",
+      "k_proj",
+      "v_proj",
+      "o_proj",
+      "in_proj_qkv",
+      "in_proj_z",
+      "out_proj",
+      "gate_proj",
+      "up_proj",
+      "down_proj"
+    ],
+    "packing": false,
+    "bf16": true,
+    "gradient_checkpointing": true,
+    "quantization": "4bit nf4 double-quant"
+  },
+  "checkpointing": {
+    "save_strategy": "steps",
+    "save_steps": 500,
+    "save_total_limit": 3,
+    "save_only_model": false,
+    "resume_policy": "resume_from_latest_valid_checkpoint"
+  },
+  "runtime": {
+    "python": "3.12",
+    "torch": "2.9.1+cu129",
+    "transformers": "5.15.1",
+    "datasets": "5.0.1",
+    "trl": "1.10.0",
+    "peft": "0.20.0",
+    "bitsandbytes": "0.50.1",
+    "gpu": "NVIDIA RTX Pro 6000 Blackwell DC-1-24Q MIG 1g.24gb",
+    "bf16_supported": true
+  },
+  "artifact_policy": {
+    "git": "notebooks, configuration, manifests, reports, and review queues only",
+    "huggingface": "final SFT LoRA adapter and model card",
+    "excluded": "raw datasets, base model, optimizer states, and intermediate checkpoints"
+  }
+}

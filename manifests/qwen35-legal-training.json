@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "created_at_utc": "2026-08-26T06:06:54.797854+00:00",
+  "updated_at_utc": "2026-08-27T20:14:19.266304+00:00",
+  "run_mode": "full",
+  "base_model": {
+    "repo_id": "Qwen/Qwen3.5-4B-Base",
+    "revision": "1001bb4d826a52d1f399e183466143f4da7b741b"
+  },
+  "datasets": {
+    "corpus": {
+      "repo_id": "morpknight/indonesian-legal-corpus",
+      "revision": "814f32015b10bf376907aa26ce1c12fe8bef700b",
+      "rows": {
+        "train": 587070,
+        "validation": 30983,
+        "test": 23932
+      }
+    },
+    "qa_sft": {
+      "repo_id": "morpknight/indonesian-legal-qa-sft",
+      "revision": "0d25efe8bf09dad69c3544d9bf62036967508bda",
+      "rows": {
+        "train": 10576428,
+        "validation": 626393,
+        "test": 638610
+      }
+    }
+  },
+  "stages": {
+    "dapt": {
+      "status": "completed",
+      "global_step": 10000,
+      "train_examples": 80000,
+      "train_loss": 0.9620845905,
+      "train_runtime_seconds": 75689.0913,
+      "final_artifact": "final_adapter",
+      "checkpoint_policy": "checkpoint-10000 retained locally; intermediate checkpoints are not committed"
+    },
+    "sft": {
+      "status": "completed",
+      "global_step": 10000,
+      "train_examples": 80000,
+      "train_loss": 1.0267998192,
+      "train_runtime_seconds": 61504.8777,
+      "final_artifact": "final_adapter",
+      "adapter_size_bytes": 61002712,
+      "adapter_sha256": "33d0685af52f7602307fd29b75db94d17f3da41d8ed40e7b731def646fb21839"
+    }
+  },
+  "acceptance": {
+    "status": "passed",
+    "scope": "adapter loads with the pinned base model and produces a non-empty response",
+    "legal_correctness": "not established"
+  },
+  "distribution": {
+    "git": "notebooks, configs, manifests, reports, and review artifacts",
+    "huggingface_model_repo": "morpknight/qwen3.5-4b-indonesian-legal-lora",
+    "weights_in_git": false
+  }
+}

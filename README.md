@@ -43,6 +43,21 @@ P0 tidak mencakup:
 
 Kontrak lengkap tersedia di [`docs/p0-contract.md`](docs/p0-contract.md).
 
+## Eksperimen Qwen terpisah
+
+Repository ini juga menyimpan catatan reproduktibilitas untuk eksperimen
+Qwen3.5 4B Base Indonesian legal. Eksperimen tersebut tidak mengubah kontrak
+P0 dan tidak menjadikan model generatif sebagai authority layer. Notebook,
+konfigurasi, manifest, serta hasil evaluasinya tersedia di:
+
+- [`docs/qwen35-legal-experiment.md`](docs/qwen35-legal-experiment.md)
+- [`notebooks/qwen35_indonesian_legal_finetune.ipynb`](notebooks/qwen35_indonesian_legal_finetune.ipynb)
+- [`notebooks/qwen35_legal_evaluation.ipynb`](notebooks/qwen35_legal_evaluation.ipynb)
+- [`reports/qwen35-legal/evaluation-summary.md`](reports/qwen35-legal/evaluation-summary.md)
+
+Weights adapter tidak disimpan di Git; model publik didistribusikan melalui
+[`morpknight/qwen3.5-4b-indonesian-legal-lora`](https://huggingface.co/morpknight/qwen3.5-4b-indonesian-legal-lora).
+
 ## Struktur
 
 ```text

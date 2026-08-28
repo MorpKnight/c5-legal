@@ -23,3 +23,10 @@ artifacts/*
 exports/*
 !exports/.gitkeep
 
+# Notebook execution state and local fine-tuning checkpoints.
+notebooks/.ipynb_checkpoints/
+**/checkpoint-*/
+*.safetensors
+*.ckpt
+*.pt
+*.pth

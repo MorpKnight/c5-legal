@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "experiment_id": "qwen35-indonesian-legal-evaluation",
+  "model": {
+    "base_model": "Qwen/Qwen3.5-4B-Base",
+    "adapter": "morpknight/qwen3.5-4b-indonesian-legal-lora"
+  },
+  "input": {
+    "dataset": "morpknight/indonesian-legal-qa-sft",
+    "split": "test",
+    "all_shards": true,
+    "sample_limit": 200,
+    "deduplication_key": "answer_hash",
+    "expert_set": null
+  },
+  "generation": {
+    "max_new_tokens": 256,
+    "max_input_tokens": 4096,
+    "enable_thinking": false,
+    "stop_token": "<|im_end|>"
+  },
+  "diagnostics": [
+    "token_precision_recall_f1",
+    "reference_marker_recall",
+    "max_token_hit",
+    "protocol_marker_count",
+    "repeated_6gram_ratio",
+    "latency"
+  ],
+  "gates": {
+    "artifact_integrity": "required",
+    "dataset_count_integrity": "required",
+    "generation_technical_check": "required",
+    "human_legal_review": "required",
+    "retrieval_quality": "separate_track_required",
+    "production_decision": "blocked_until_human_and_rag_evaluation"
+  }
+}

@@ -1,0 +1,75 @@
+{
+  "schema_version": 1,
+  "created_at_utc": "2026-08-28T00:02:39.136377+00:00",
+  "mode": "full",
+  "configuration": {
+    "seed": 42,
+    "eval_limit": 200,
+    "max_new_tokens": 256,
+    "max_input_tokens": 4096,
+    "enable_thinking": false,
+    "compare_baseline": false,
+    "expert_set": null
+  },
+  "artifacts": {
+    "base_model": "Qwen/Qwen3.5-4B-Base@1001bb4d826a52d1f399e183466143f4da7b741b",
+    "adapter": "final SFT adapter",
+    "adapter_size_bytes": 61002712,
+    "adapter_sha256": "33d0685af52f7602307fd29b75db94d17f3da41d8ed40e7b731def646fb21839",
+    "last_checkpoint_exists": true,
+    "training_manifest": "manifests/qwen35-legal-training.json"
+  },
+  "dataset_counts": {
+    "qa": {
+      "train": 10576428,
+      "validation": 626393,
+      "test": 638610
+    },
+    "corpus": {
+      "train": 587070,
+      "validation": 30983,
+      "test": 23932
+    }
+  },
+  "sampling": {
+    "qa_test_rows_scanned": 638610,
+    "selected_shards": 7,
+    "total_shards": 7,
+    "candidate_rows_after_scan": 597779,
+    "cases_evaluated": 200,
+    "deduplicated_by": "answer_hash"
+  },
+  "automatic_diagnostics": {
+    "cases": 200,
+    "errors": 0,
+    "empty_answers": 0,
+    "hit_max_new_tokens": 32,
+    "hit_max_new_tokens_rate": 0.16,
+    "protocol_marker_rows": 0,
+    "repetition_rows": 14,
+    "repetition_rate": 0.07,
+    "mean_repeated_ngram_ratio": 0.036841,
+    "mean_token_f1_diagnostic": 0.457898,
+    "median_token_f1_diagnostic": 0.446941,
+    "mean_reference_marker_recall_diagnostic": 0.982729,
+    "mean_latency_seconds": 3.4885
+  },
+  "corpus_metadata_audit": {
+    "required_columns_present": true,
+    "sample_size": 512,
+    "nonempty_required_metadata_rate": 1.0,
+    "note": "Metadata audit only; it does not establish retrieval quality or source authority."
+  },
+  "gates": {
+    "artifact_integrity": "passed",
+    "dataset_count_integrity": "passed",
+    "generation_technical_check": "passed",
+    "human_legal_review": "required",
+    "retrieval_quality": "not_run",
+    "production_decision": "not_ready_without_human_and_RAG_evaluation"
+  },
+  "repository_outputs": {
+    "model_outputs": "reports/qwen35-legal/model_outputs.jsonl",
+    "human_review_queue": "reports/qwen35-legal/human_review_queue.csv"
+  }
+}
